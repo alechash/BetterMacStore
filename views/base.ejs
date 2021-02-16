@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Warrant Canary -->
+<!-- The FBI has not been here -->
+
+<!-- https://en.wikipedia.org/wiki/Warrant_canary -->
+
+<head>
+    <!-- Generic Meta Tags for Search SEO -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Better Mac Store is an attempt to make the Mac App Store better.">
+    <meta name="author" content="Better Mac Store">
+
+    <!-- web app -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Apple Touch Icon (at least 200x200px) -->
+    <link rel="apple-touch-icon" href="/img/logo_high_res.png">
+
+    <!-- To run web application in full-screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Facebook Open Graph -->
+    <meta property="og:type" content="webpage" />
+    <meta property="og:title" content="<%= title %> - <%= name %>" />
+    <meta property="og:description" content="Siddes is a social media based around user inteaction and privacy." />
+    <meta property="og:image" content="http://siddes.com/img/logo_high_res.png" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@simplytics" />
+    <meta name="twitter:creator" content="@mrmemrdev" />
+
+    <!-- Static Resources -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.rawgit.com/wnda/pivot/master/pivot.js"></script>
+
+    <title><%= title %> - <%= name %></title>
+</head>
+
+<body>
+    <header>
+        <% if (navbar == true) { %>
+        <%- include('partials/navbar') %>
+        <% } %>
+    </header>
+    <main class="mx-2 m-4 mx-6">
+        <%- include(template) %>
+    </main>
+    <footer>
+        <% if (footer == true) { %>
+        <%- include('partials/footer') %>
+        <% } %>
+    </footer>
+    <script src="/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+</body>
+
+</html>

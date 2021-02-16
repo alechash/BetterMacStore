@@ -1,0 +1,13 @@
+{
+    "name": "The Better Mac Store",
+    "short_name": "MacAppStore",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#000",
+    "description": "A better App Store for macOS.",
+    "icons": [{
+        "src": "img/touch/192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+    }]
+}

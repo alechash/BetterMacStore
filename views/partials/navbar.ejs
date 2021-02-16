@@ -1,0 +1,77 @@
+<div class="fixed w-full shadow-xl z-50">
+    <div class="antialiased bg-gray-100">
+        <div class="w-full text-gray-700">
+            <div x-data="{ open: true }"
+                class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+                <div class="flex flex-row items-center justify-between p-4">
+                    <a href="#"
+                        class="text-lg font-semibold tracking-widest text-gray-900 rounded-lg focus:outline-none focus:shadow-outline">Better
+                        Mac Store</a>
+                    <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
+                        <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+                            <path x-show="open" fill-rule="evenodd"
+                                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                                clip-rule="evenodd"></path>
+                            <path x-show="!open" fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+                <nav :class="{'flex': !open, 'hidden': open}"
+                    class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row">
+                    <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                        id="search">
+                        <input placeholder="Search" class="bg-transparent focus:outline-none w-full" id="searchInput"
+                            autocomplete="off">
+                    </a>
+                    <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                        href="#">Trending</a>
+                    <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                        href="#">Explore</a>
+                    <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                        href="/developer">Developers</a>
+                    <% if(loggedin == true) { %>
+                    <span
+                        class="mt-2 text-sm transition duration-300 rounded-lg md:mt-0 md:ml-4 focus:outline-none focus:shadow-outline">
+                        <img src="/img/bruggg_logo.png" width="30px" class="rounded-2xl"></span>
+                    <div
+                        class="mt-2 text-sm text-gray-100 font-semibold bg-blue-600 transition duration-300 rounded-lg md:mt-0 md:ml-4 hover:text-gray-200 hover:bg-blue-700 focus:outline-none focus:shadow-outline">
+                        <div class="float-left px-4 py-2">
+                            Account<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"
+                                class="float-right ml-2 fill-current">
+                                <path fill-rule="evenodd"
+                                    d="M12.78 6.22a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06 0L3.22 7.28a.75.75 0 011.06-1.06L8 9.94l3.72-3.72a.75.75 0 011.06 0z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div id="dropdown" class="px-4 py-2 mt-2 text-sm text-gray-100 font-semibold bg-blue-600 transition duration-300
+                            rounded-lg md:mt-0 md:ml-4 hover:text-gray-200 hover:bg-blue-700 focus:outline-none
+                            focus:shadow-outline fixed top-14 right-8 text-md">
+                            <span>
+                                <a href="/account">Settings</a>
+                            </span>
+                            <br>
+                            <span>
+                                <a href="/developer">Downloaded Apps</a>
+                            </span>
+                            <br>
+                            <span>
+                                <a href="/account/lists">Lists</a>
+                            </span>
+                            <br>
+                            <span>
+                                <a href="/developer">Developer</a>
+                            </span>
+                        </div>
+                    </div>
+                    <% } else {%>
+                    <a class="px-4 py-2 mt-2 text-sm text-gray-100 font-semibold bg-blue-600 transition duration-300 rounded-lg md:mt-0 md:ml-4 hover:text-gray-200 hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+                        href="/login">Login</a>
+                    <% } %>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>

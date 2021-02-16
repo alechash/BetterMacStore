@@ -1,0 +1,36 @@
+{
+  "name": "bettermacstore",
+  "version": "0.0.1",
+  "description": "a better mac app store, because the current one stinks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bruggg/BetterMacStore.git"
+  },
+  "author": "Bruggg LLC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bruggg/BetterMacStore/issues"
+  },
+  "homepage": "https://github.com/bruggg/BetterMacStore#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.11.15",
+    "nodemon": "^2.0.7",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "serve-static": "^1.14.1",
+    "url": "^0.11.0",
+    "uuid": "^8.3.2"
+  }
+}
