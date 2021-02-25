@@ -30,6 +30,9 @@ app.use('/*', async function (req, res, next) {
 
 if (process.env.ENV == "p" || process.env.ENV == "production") {
     app.use('/', require('./routes/main'))
+    app.use('/account', require('./routes/account'))
+    app.use('/app', require('./routes/app'))
+    app.use('/dev', require('./routes/developer'))
     app.use('/', require('./routes/user'))
 
 }

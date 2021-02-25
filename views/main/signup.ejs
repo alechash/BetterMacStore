@@ -1,8 +1,24 @@
-<h3>signup</h3>
-<form method="POST" action="/signup">
-    <input name="email" placeholder="me@email.com"><br>
-    <input name="password" placeholder="set password"><br>
-    <input name="password2" placeholder="confirm password"><br>
-    <input name="authentication" value="later on, i will implment a form authentication thingy" hidden="">
-    <button type="submit">signup</button>
-</form>
+<div class="box-header p-9 px-4 font-bold pt-12">
+    <h1 class="text-2xl p-2 m-2">Signup</h1>
+    <form method="POST" action="/signup">
+        <input name="email" placeholder="me@email.com"
+            class="focus:outline-none m-2 p-2 rounded-xl border-2 border-gray w-full" required><br>
+        <input name="password" placeholder="set password"
+            class="focus:outline-none m-2 p-2 rounded-xl border-2 border-gray w-full" required><br>
+        <input name="password2" placeholder="confirm password"
+            class="focus:outline-none m-2 p-2 rounded-xl border-2 border-gray w-full" required><br>
+        <input name="authentication" value="later on, i will implment a form authentication thingy" hidden=""
+            class="focus:outline-none m-2 p-2 rounded-xl border-2 border-gray w-full" required>
+        <p class="font-normal p-2 m-2 pb-0 mb-0">
+            <label>By signing up, I agree to the terms of service and privacy policy</label>
+        </p>
+        <p class="font-normal p-2 m-2 pt-0 mt-0">
+            <input type="checkbox" name="developer" id="developer">
+            <label for="developer">I am a developer (this will enable developer tools)</label>
+        </p>
+        <button type="submit" class="p-2 m-2 bg-blue-500 text-white rounded-xl w-full"
+            data-sitekey="3f3e8f03-9da1-432a-a9e9-96f62ab12d17" data-callback="onSubmit">signup</button>
+        <a href="/login" class="text-blue-500 ml-2 hover:underline">Account? Login.</a>
+    </form>
+</div>
+<script src="https://hcaptcha.com/1/api.js" async defer></script>

@@ -2,11 +2,12 @@
     <div class="antialiased bg-gray-100">
         <div class="w-full text-gray-700">
             <div x-data="{ open: true }"
-                class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+                class="flex flex-col px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
                 <div class="flex flex-row items-center justify-between p-4">
-                    <a href="#"
+                    <a href="/"
                         class="text-lg font-semibold tracking-widest text-gray-900 rounded-lg focus:outline-none focus:shadow-outline">Better
-                        Mac Store</a>
+                        Mac Store <span class="duration-1000 bg-gradient-to-r from-blue-500 to-purple-500 text-white p-1 rounded hover:to-blue-500
+                            hover:from-purple-500 transition-all">BETA</span></a>
                     <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
                         <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
                             <path x-show="open" fill-rule="evenodd"
@@ -22,52 +23,99 @@
                     class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row">
                     <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                         id="search">
-                        <input placeholder="Search" class="bg-transparent focus:outline-none w-full" id="searchInput"
-                            autocomplete="off">
+                        <input placeholder='Search ("/" to focus)' class="bg-transparent focus:outline-none w-full"
+                            id="searchInput" autocomplete="off">
                     </a>
                     <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                        href="#">Trending</a>
+                        href="/trending">Trending</a>
                     <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                        href="#">Explore</a>
+                        href="/apps">Explore</a>
                     <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                        href="/developer">Developers</a>
-                    <% if(loggedin == true) { %>
-                    <span
-                        class="mt-2 text-sm transition duration-300 rounded-lg md:mt-0 md:ml-4 focus:outline-none focus:shadow-outline">
-                        <img src="/img/bruggg_logo.png" width="30px" class="rounded-2xl"></span>
-                    <div
-                        class="mt-2 text-sm text-gray-100 font-semibold bg-blue-600 transition duration-300 rounded-lg md:mt-0 md:ml-4 hover:text-gray-200 hover:bg-blue-700 focus:outline-none focus:shadow-outline">
-                        <div class="float-left px-4 py-2">
-                            Account<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"
-                                class="float-right ml-2 fill-current">
+                        href="/developer" id="developer_link">Developers</a>
+                    <% if(loggedin == true) { %> <div @click.away="open = false" class="relative"
+                        x-data="{ open: false }">
+                        <button @click="open = !open"
+                            class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg bg-blue-600 text-white hover:bg-blue-700 md:w-auto md:inline md:mt-0 md:ml-4 focus:outline-none focus:shadow-outline">
+                            <span>Account</span>
+                            <svg fill="currentColor" viewBox="0 0 20 20"
+                                :class="{'rotate-180': open, 'rotate-0': !open}"
+                                class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1">
                                 <path fill-rule="evenodd"
-                                    d="M12.78 6.22a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06 0L3.22 7.28a.75.75 0 011.06-1.06L8 9.94l3.72-3.72a.75.75 0 011.06 0z">
-                                </path>
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
                             </svg>
-                        </div>
-                        <div id="dropdown" class="px-4 py-2 mt-2 text-sm text-gray-100 font-semibold bg-blue-600 transition duration-300
-                            rounded-lg md:mt-0 md:ml-4 hover:text-gray-200 hover:bg-blue-700 focus:outline-none
-                            focus:shadow-outline fixed top-14 right-8 text-md">
-                            <span>
-                                <a href="/account">Settings</a>
-                            </span>
-                            <br>
-                            <span>
-                                <a href="/developer">Downloaded Apps</a>
-                            </span>
-                            <br>
-                            <span>
-                                <a href="/account/lists">Lists</a>
-                            </span>
-                            <br>
-                            <span>
-                                <a href="/developer">Developer</a>
-                            </span>
+                        </button>
+                        <div x-show="open" x-transition:enter="transition ease-out duration-100"
+                            x-transition:enter-start="transform opacity-0 scale-95"
+                            x-transition:enter-end="transform opacity-100 scale-100"
+                            x-transition:leave="transition ease-in duration-75"
+                            x-transition:leave-start="transform opacity-100 scale-100"
+                            x-transition:leave-end="transform opacity-0 scale-95"
+                            class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
+                            <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
+                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                    href="/account/settings">Settings</a>
+                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                    href="/account/lists">Lists</a>
+                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                    href="/logout">Logout</a>
+                                <a class="block px-4 pt-1 mt-2 mb-2 text-sm font-semibold bg-transparent rounded-lg
+                                        bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"></a>
+                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                    href="/developer">Developer</a>
+                                <a class="block px-4 pt-1 mt-2 mb-2 text-sm font-semibold bg-transparent rounded-lg
+                                    bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"></a>
+                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                    href="https://policy.bruggg.com/policy/privacy.pdf" target="_blank">Privacy
+                                    Policy</a>
+                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                    href="https://policy.bruggg.com/policy/terms.pdf" target="_blank">Terms of
+                                    Service</a>
+                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                    href="https://bruggg.com" target="_blank">A Project by Bruggg</a>
+                            </div>
                         </div>
                     </div>
                     <% } else {%>
-                    <a class="px-4 py-2 mt-2 text-sm text-gray-100 font-semibold bg-blue-600 transition duration-300 rounded-lg md:mt-0 md:ml-4 hover:text-gray-200 hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-                        href="/login">Login</a>
+                    <div @click.away="open = false" class="relative" x-data="{ open: false }">
+                        <button @click="open = !open"
+                            class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg bg-blue-600 text-white hover:bg-blue-700 md:w-auto md:inline md:mt-0 md:ml-4 focus:outline-none focus:shadow-outline">
+                            <span><a href="/signup">Signup</a></span>
+                            <svg fill="currentColor" viewBox="0 0 20 20"
+                                :class="{'rotate-180': open, 'rotate-0': !open}"
+                                class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                        <div x-show="open" x-transition:enter="transition ease-out duration-100"
+                            x-transition:enter-start="transform opacity-0 scale-95"
+                            x-transition:enter-end="transform opacity-100 scale-100"
+                            x-transition:leave="transition ease-in duration-75"
+                            x-transition:leave-start="transform opacity-100 scale-100"
+                            x-transition:leave-end="transform opacity-0 scale-95"
+                            class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
+                            <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
+                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                    href="/signup">Signup</a>
+                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                    href="/login">Login</a>
+                                <a class="block px-4 pt-1 mt-2 mb-2 text-sm font-semibold bg-transparent rounded-lg
+                                        bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"></a>
+                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                    href="/developer">Developers</a>
+                                <a class="block px-4 pt-1 mt-2 mb-2 text-sm font-semibold bg-transparent rounded-lg
+                                    bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"></a>
+                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                    href="https://policy.bruggg.com/policy/privacy.pdf">Privacy Policy</a>
+                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                    href="https://policy.bruggg.com/policy/terms.pdf">Terms of Service</a>
+                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                    href="https://bruggg.com">A Project by Bruggg</a>
+                            </div>
+                        </div>
+                    </div>
                     <% } %>
                 </nav>
             </div>

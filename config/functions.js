@@ -14,7 +14,16 @@ const staff = function (user) {
     };
 };
 
+const needLoggedin = function (user) {
+    if (user) {
+        
+    } else {
+        next()
+    }
+}
+
 module.exports = {
     loggedin,
-    staff
+    staff,
+    needLoggedin
 };

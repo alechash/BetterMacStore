@@ -1,7 +1,12 @@
-<h3>login</h3>
-<form method="POST" action="/login">
-    <input name="email" placeholder="me@email.com"><br>
-    <input name="password" placeholder="your password"><br>
-    <input name="authentication" value="later on, i will implment a form authentication thingy" hidden="">
-    <button type="submit">login</button>
-</form>
+<div class="box-header p-9 px-4 font-bold pt-12">
+    <h1 class="text-2xl p-2 m-2">Login</h1>
+    <form method="POST" action="/login">
+        <input name="email" placeholder="me@email.com" type="text"
+            class="focus:outline-none m-2 p-2 rounded-xl border-2 border-gray w-full"><br>
+        <input name="password" placeholder="your password" type="password"
+            class="focus:outline-none m-2 p-2 rounded-xl border-2 border-gray w-full"><br>
+        <input name="authentication" value="later on, i will implment a form authentication thingy" hidden="">
+        <button type="submit" class="p-2 m-2 bg-blue-500 text-white rounded-xl w-full">login</button>
+        <a href="/signup" class="text-blue-500 ml-2 hover:underline">No account? Signup.</a>
+    </form>
+</div>

@@ -16,6 +16,8 @@ router.get('/*', async function (req, res, next) {
     about.user = req.user
     about.navbar = true
     about.footer = true
+    about.analytics = process.env.ANALYTICS
+    about.ga = process.env.GA_CODE
 
     next()
 });

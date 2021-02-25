@@ -6,7 +6,6 @@
 
 /** 
  * service worker
- */
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js').then(function (registration) {
         console.log('Registration succeeded.');
@@ -16,6 +15,7 @@ if ('serviceWorker' in navigator) {
         console.log('Registration failed with ' + error);
     });
 }
+*/
 
 const searchInput = document.getElementById('searchInput')
 const search = document.getElementById('search')
@@ -30,3 +30,9 @@ searchInput.addEventListener("keypress", function (event) {
         }
     }
 });
+
+window.onkeyup = function (event) {
+    if (event.keyCode == 191) {
+        searchInput.focus()
+    }
+};

@@ -1,0 +1,103 @@
+<div class="box-header p-9 px-4 font-bold pt-12">
+    <form method="POST" action="/login">
+        <div class="bg-gray-100 rounded-2xl mb-6">
+            <div class="mx-2">
+                <h1 class="text-4xl p-2 m-2 pt-5">Settings</h1>
+                <label for="email" class="p-2 my-2 text-xl">Email</label><br>
+                <input name="email" placeholder="me@email.com" type="text"
+                    class="focus:outline-none my-2 p-2 rounded-xl border-2 border-gray block relative w-full"
+                    value="<%= user.personal.email %>">
+
+                <button type="submit" class="p-2 my-2 bg-blue-500 text-white rounded-xl">save account settings</button>
+            </div>
+        </div>
+
+        <div class="bg-gray-100 rounded-2xl mb-6">
+            <h1 class="text-4xl p-2 m-2 pt-5 pl-4">Developer</h1>
+
+            <% if(user.developer.developerEnabled == true) { %>
+
+            <label for="create_org" class="p-2 m-2 text-xl">Create an Organization</label><br>
+            <div class="mx-2 pb-2">
+                <a href="/dev/new"
+                    class="p-2 bg-gray-100 text-blue-500 rounded-xl border-gray-300 border-2 text-left font-bold w-full block relative">
+                    Create an Organization
+                </a>
+            </div>
+            <label class="p-2 m-2 text-xl">My Organizations</label><br>
+            <div class="bg-gray-200 p-2 m-2 rounded-xl font-bold">
+                <a href="/dev/bruggg">
+                    <button
+                        class="p-1 m-2 mr-0 bg-gray-100 text-blue-500 rounded-xl border-gray-300 border-2 text-left font-bold">
+                        @bruggg
+                    </button>
+                </a>
+                <a href="/dev/bruggg/settings">
+                    <button
+                        class="p-1 m-2 bg-gray-100 text-blue-500 rounded-xl border-gray-300 border-2 text-left font-bold float-right">
+                        Manage
+                    </button>
+                </a>
+            </div>
+            <div class="bg-gray-200 p-2 m-2 rounded-xl font-bold">
+                <a href="/dev/siddes">
+                    <button
+                        class="p-1 m-2 mr-0 bg-gray-100 text-blue-500 rounded-xl border-gray-300 border-2 text-left font-bold">
+                        @siddes
+                    </button>
+                </a>
+                <a href="/dev/siddes/settings">
+                    <button
+                        class="p-1 m-2 bg-gray-100 text-blue-500 rounded-xl border-gray-300 border-2 text-left font-bold float-right">
+                        Manage
+                    </button>
+                </a>
+            </div>
+
+            <div class="mx-2 pb-1">
+                <a href="/account/settings/developer/toggle"
+                    class="p-2 bg-red-500 text-white rounded-xl border-red-700 border-2 text-left font-bold w-full block relative mb-2">
+                    Disable Developer Access
+                </a>
+            </div>
+
+            <% } else { %>
+
+            <div class="mx-2 pb-2">
+                <a href="/account/settings/developer/toggle"
+                    class="p-2 bg-gray-100 text-blue-500 rounded-xl border-gray-300 border-2 text-left font-bold w-full block relative">
+                    Enable Developer Access
+                </a>
+            </div>
+
+            <% } %>
+        </div>
+
+        <div class="bg-gray-100 rounded-2xl mb-6">
+            <div class="m-2">
+                <h1 class="text-4xl p-2 m-2 pt-5">Meta</h1>
+                <label for="password" class="mt-2 p-2 text-xl">Password (encrypted)</label><br>
+                <input name="password" type="text"
+                    class="p-2 mb-2 focus:outline-none rounded-xl border-2 border-gray w-full"
+                    value="<%= user.personal.password %>" disabled><br>
+                <label for="creationDate" class="mt-2 p-2 text-xl">Account Creation Date</label><br>
+                <input name="creationDate" type="text"
+                    class="p-2 mb-2 focus:outline-none rounded-xl border-2 border-gray w-full"
+                    value="<%= user.meta.creationDate %>" disabled><br>
+                <label for="staff" class="mt-2 p-2 text-xl">Staff</label><br>
+                <input name="staff" type="text"
+                    class="p-2 mb-2 focus:outline-none rounded-xl border-2 border-gray w-full"
+                    value="<%= user.meta.staff %>" disabled><br>
+            </div>
+        </div>
+
+        <div class="bg-red-200 rounded-2xl mb-6 border-2 border-red-500">
+            <div class="m-2">
+                <h1 class="text-4xl p-2 m-2 pt-5">Danger Zone</h1>
+                <p class="mt-2 p-2 text-xl font-normal">This will be enabled in a future release. If you want your
+                    account deleted, please <a href="mailto:support@bettermacstore.com"
+                        title="support@bettermacstore.com" class="text-blue-600">email us</a>.</p>
+            </div>
+        </div>
+    </form>
+</div>
