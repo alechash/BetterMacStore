@@ -1,8 +1,9 @@
 const express = require('express')
 const app = express();
 const mongoose = require('mongoose');
+const session = require('express-session')
 const passport = require('passport');
-
+const MS = require('express-mongoose-store')(session, mongoose);
 
 require('dotenv').config()
 require('./config/passport')(passport)
@@ -12,10 +13,13 @@ app.use(require('cookie-parser')());
 app.use(require('body-parser').urlencoded({
     extended: true
 }));
-app.use(require('express-session')({
+app.use(session({
     secret: 'well, this is weird, please leave a message because we wont get back to you... simplytics',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    store: new MS({
+        ttl: 63113904000
+    })
 }));
 
 app.set('views', 'views');

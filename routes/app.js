@@ -22,6 +22,13 @@ router.get('/*', async function (req, res, next) {
     next()
 });
 
+router.get('/new', async function (req, res, next) {
+    about.title = 'Release an App'
+    about.template = 'app/new'
+
+    return res.render('base', about);
+})
+
 router.get('/:id', function (req, res, next) {
     about.title = 'Home'
     about.template = 'main/index'

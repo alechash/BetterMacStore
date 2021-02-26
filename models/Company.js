@@ -1,25 +1,26 @@
 const mongoose = require('mongoose');
 
 const Company = new mongoose.Schema({
-    meta: {
+    general: {
         name: {
+            type: String,
+            unique: true,
+            required: true
+        },
+        legalName: {
             type: String,
             unique: false,
             required: false
         },
-    },
-    developer: {
-        developerEnabled: {
-            type: Boolean,
+        email: {
+            type: String,
             unique: false,
-            required: true,
-            default: false
+            required: true
         },
-        organizations: {
-            type: Array,
+        phone: {
+            type: Number,
             unique: false,
-            required: true,
-            default: []
+            required: false
         },
     },
     meta: {
@@ -29,11 +30,51 @@ const Company = new mongoose.Schema({
             required: true,
             default: Date.now()
         },
-        staff: {
+        verified: {
             type: Boolean,
             unique: false,
             required: true,
             default: false
+        },
+        members: {
+            type: Array,
+            unique: false,
+            required: true,
+            default: []
+        },
+    },
+    other: {
+        website: {
+            type: String,
+            unique: false,
+            required: false
+        },
+        twitter: {
+            type: String,
+            unique: false,
+            required: false
+        },
+        location: {
+            type: String,
+            unique: false,
+            required: false
+        },
+    },
+    stores: {
+        apple: {
+            type: String,
+            unique: false,
+            required: false
+        },
+        android: {
+            type: String,
+            unique: false,
+            required: false
+        },
+        microsoft: {
+            type: String,
+            unique: false,
+            required: false
         },
     }
 });

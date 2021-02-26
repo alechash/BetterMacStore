@@ -1,0 +1,78 @@
+<div class="box-header p-9 px-4 font-bold pt-12">
+    <img src="https://avatar.oxro.io/avatar.svg?name=<%= company.general.name %>&bold=true&random=<%= Math.random() %>"
+        class="inline w-12 rounded-2xl border-black float-left mt-4 pt-0.5">
+    <div class="ml-2 inline-block">
+        <h1 class="text-2xl font-sans subpixel-antialiased diagonal-fractions tracking-wider py-3 pb-0">
+            <%= company.general.name %>
+
+            <% if(company.meta.verified) { %>
+            <span
+                class="text-green-700 bg-green-200 border-2 border-green-400 text-sm rounded-2xl px-2 py-0 mt-0">Verified</span>
+            <% } %>
+        </h1>
+        <p class="text-gray-500 pt-0">
+            <!--
+            <% if(company.general.legalName) { %>
+            <%= company.general.legalName %>
+            <% } else { %>
+            <%= company.general.name %>
+            <% } %>
+            -->
+
+            <% if(company.other.twitter) { %>
+            <span class="pl-0 px-4 pr-0 text-gray-200">@</span>
+            <a href="http://twitter.com/<%= company.other.twitter %>" class="hover:underline">
+                <span class="text-gray-500"><%= company.other.twitter %></span>
+            </a>
+            <% } %>
+
+            <% if(company.other.website) { %>
+            <span class="px-4 pr-0 text-gray-200 text-xs">🔗</span>
+            <a href="<%= company.other.website %>" class="hover:underline">
+                <span
+                    class="text-gray-500"><%= company.other.website.replace('https://', '').replace('http://', '') %></span>
+            </a>
+            <% } %>
+
+            <% if(company.other.location) { %>
+            <span class="px-4 pr-0 text-gray-200 text-xs">🌍</span>
+            <span class="text-gray-500"><%= company.other.location %></span>
+            <% } %>
+
+            <span class="px-4 pr-0 text-gray-200 text-xs">📧</span>
+            <a href="mailto:<%= company.general.email %>" class="hover:underline">
+                <span class="text-gray-500"><%= company.general.email %></span>
+            </a>
+        </p>
+    </div>
+    <hr class="mt-2 mb-6">
+    <div id="apps mt-3">
+        <h2 class="text-4xl">Apps</h2>
+
+        <!-- app template -->
+        <% for(i=0; i < apps.length; i++) { %>
+        <div class="w-full mt-6">
+            <div class="bg-gray-200 rounded-2xl p-3 px-5 shadow-xl text-black shadow-2xl">
+                <h1 class="text-2xl font-sans subpixel-antialiased diagonal-fractions tracking-wider py-3 pb-0 pt-4">
+                    <img src="/img/bruggg_logo.png" class="w-12 float-left rounded mt-0.5">
+                    <span class="pl-3"><a href="/app/9743920">Visual Studio Code</a></span>
+                    <div
+                        class="float-right bg-blue-600 rounded-2xl p-1 px-3 pt-1.5 text-sm uppercase font-bold cursor-pointer shadow-2xl text-white">
+                        <a href="/app/9743920/download/latest" download>Download</a>
+                    </div>
+                </h1>
+                <h4
+                    class="text-xs font-sans subpixel-antialiased diagonal-fractions tracking-wider py-3 pt-0 mb-2 text-gray-700">
+                    <span class="pl-3"><a href="/dev/microsoft" class="hover:underline">Microsoft</a></span>
+                    <div class="float-right rounded-2xl p-1 px-3 pt-1.5 text-xsm uppercase">
+                        Free
+                    </div>
+                </h4>
+            </div>
+        </div>
+        <% } %>
+        <% if(apps.length < 1) { %>
+        <p class="ml-10 mt-10 font-normal">This developer has not released any apps.</p>
+        <% } %>
+    </div>
+</div>
