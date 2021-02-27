@@ -29,30 +29,29 @@ const Application = new mongoose.Schema({
             default: false
         },
     },
+    binaries: {
+        app: {
+            type: String,
+            unique: false,
+            required: true,
+        },
+        zip: {
+            type: String,
+            unique: false,
+            required: true,
+        },
+        dmg: {
+            type: String,
+            unique: false,
+            required: false,
+        },
+    },
     unique: {
         appId: {
             type: String,
             unique: true,
             required: true,
         },
-    },
-    developer: {
-        type: String,
-        unique: false,
-        required: true,
-        default: false
-    },
-    developer: {
-        type: String,
-        unique: false,
-        required: true,
-        default: false
-    },
-    developer: {
-        type: String,
-        unique: false,
-        required: true,
-        default: false
     },
 });
 
