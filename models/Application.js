@@ -7,6 +7,11 @@ const Application = new mongoose.Schema({
             unique: false,
             required: true,
         },
+        org: {
+            type: Boolean,
+            unique: false,
+            required: true,
+        },
         name: {
             type: String,
             unique: false,
@@ -27,23 +32,6 @@ const Application = new mongoose.Schema({
             unique: false,
             required: true,
             default: false
-        },
-    },
-    binaries: {
-        app: {
-            type: String,
-            unique: false,
-            required: true,
-        },
-        zip: {
-            type: String,
-            unique: false,
-            required: true,
-        },
-        dmg: {
-            type: String,
-            unique: false,
-            required: false,
         },
     },
     unique: {

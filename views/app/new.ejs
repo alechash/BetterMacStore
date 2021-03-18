@@ -5,55 +5,74 @@
     <p class="text-gray-500 pt-0"><span class="px-4 text-gray-200 pl-0">/</span>app<span
             class="px-4 text-gray-200">/</span>new
     </p>
-    <form action="/app/new" method="POST">
+    <form action="/app/new" method="POST" enctype="multipart/form-data">
         <div class="w-full bg-gray-100 mt-8 p-6 rounded-xl font-normal">
 
             <h1 class="text-2xl font-bold">General Information</h1><br>
 
 
 
+            <label for="org" class="text-xl">Organization <span class="text-red-600">*</span></label><br>
+            <p class="text-sm">This can be changed later.</p>
+            <div class="relative inline-flex">
+                <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 412 232">
+                    <path
+                        d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z"
+                        fill="#648299" fill-rule="nonzero" /></svg>
+                <select id="org" name="org"
+                    class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none">
+                    <option value="me">Personal Account</option>
+                    <% for(i=0; i < user.developer.organizations.length; i++) { %>
+                    <option value="<%= user.developer.organizations[i] %>">@<%= user.developer.organizations[i] %>
+                    </option>
+                    <% } %>
+                </select>
+            </div><br><br>
+
+
+
             <label for="name" class="text-xl">App Name <span class="text-red-600">*</span></label><br>
-            <p class="text-sm">This is changeable later.</p>
-            <input name="name" id="name" type="text"
-                class="w-full p-1 px-2 rounded-2xl focus:outline-none border-2 border-gray-300" required><br><br>
+            <p class="text-sm">This can be changed later.</p>
+            <input name="name" id="name" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+                hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
 
 
             <label for="copy" class="text-xl">Copyright Year <span class="text-red-600">*</span></label><br>
-            <p class="text-sm">This is changeable later. (use <i>{{current}}</i> for it to always be the current
+            <p class="text-sm">This can be changed later. (use <i>{{current}}</i> for it to always be the current
                 year)</p>
-            <input name="copy" id="copy" type="text"
-                class="w-full p-1 px-2 rounded-2xl focus:outline-none border-2 border-gray-300" required><br><br>
+            <input name="copy" id="copy" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+                hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
 
 
             <label for="website" class="text-xl">Website</label><br>
             <p class="text-sm">Optional, changeable.</p>
-            <input name="website" id="website" type="url"
-                class="w-full p-1 px-2 rounded-2xl focus:outline-none border-2 border-gray-300"><br><br>
+            <input name="website" id="website" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+                hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
 
 
             <label for="description" class="text-xl">Description <span class="text-red-600">*</span></label><br>
-            <p class="text-sm">Required, changeable. Markup supported.
+            <p class="text-sm">Required, changeable.
             </p>
-            <textarea name="description" id="description" type="text"
-                class="w-full p-1 px-2 rounded-2xl focus:outline-none border-2 border-gray-300"
-                required></textarea><br><br>
+            <textarea name="description" id="description" type="text" class="w-full border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-5 bg-white
+                hover:border-gray-400 focus:outline-none appearance-none" required></textarea><br><br>
 
 
 
             <label for="license" class="text-xl">License</label><br>
             <p class="text-sm">Optional, changeable. This is mostly used for open-source projects.</p>
-            <input name="license" id="license" type="text"
-                class="w-full p-1 px-2 rounded-2xl focus:outline-none border-2 border-gray-300"><br><br>
+            <input name="license" id="license" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+                hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
 
 
             <label for="repo" class="text-xl">Repository</label><br>
             <p class="text-sm">Optional, changeable. This is normally a GitHub link or another git-scm instance.</p>
-            <input name="repo" id="repo" type="url"
-                class="w-full p-1 px-2 rounded-2xl focus:outline-none border-2 border-gray-300"><br><br>
+            <input name="repo" id="repo" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+                hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
 
 
@@ -63,22 +82,22 @@
 
             <label for="privacy" class="text-xl">Privacy Policy <span class="text-red-600">*</span></label><br>
             <p class="text-sm">Required, changeable.</p>
-            <input name="privacy" id="privacy" type="url"
-                class="w-full p-1 px-2 rounded-2xl focus:outline-none border-2 border-gray-300" required><br><br>
+            <input name="privacy" id="privacy" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+                hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
 
 
             <label for="terms" class="text-xl">Terms of Service</label><br>
             <p class="text-sm">Optional, changeable.</p>
-            <input name="terms" id="terms" type="url"
-                class="w-full p-1 px-2 rounded-2xl focus:outline-none border-2 border-gray-300"><br><br>
+            <input name="terms" id="terms" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+                hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
 
 
             <label for="gdpr" class="text-xl">GDPR Policies</label><br>
             <p class="text-sm">Optional, changeable.</p>
-            <input name="gdpr" id="gdpr" type="url"
-                class="w-full p-1 px-2 rounded-2xl focus:outline-none border-2 border-gray-300"><br><br>
+            <input name="gdpr" id="gdpr" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+                hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
 
 
@@ -87,11 +106,9 @@
 
 
             <label for="apple" class="text-xl">Apple App Store URL</label><br>
-            <p class="text-sm">This will be public. This can be changed later. This will also be verified upon
-                account
-                creation.</p>
-            <input name="apple" id="apple" type="url"
-                class="w-full p-1 px-2 rounded-2xl focus:outline-none border-2 border-gray-300"><br><br>
+            <p class="text-sm">This will be public. This can be changed later.</p>
+            <input name="apple" id="apple" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+                hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
 
 
@@ -101,20 +118,17 @@
 
             <label for="icon" class="text-xl">App Icon <span class="text-red-600">*</span></label><br>
             <p class="text-sm">Required, changeable. This can be a png, jpeg, or gif. Gifs will play on hover.
-                512x512
-                recommended.</p>
-            <input name="icon" id="icon" type="file" accept="image/gif, image/jpeg, image/png"
-                class="w-full p-1 px-2 rounded-2xl focus:outline-none border-2 border-gray-300" required><br><br>
+                512px by 512px recommended.</p>
+            <input name="icon" id="icon" type="file" accept="image/gif, image/jpeg, image/png" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+                hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
 
 
             <label for="screenshots" class="text-xl">Screenshots <span class="text-red-600">*</span></label><br>
             <p class="text-sm">Required, changeable. This can be a png, jpeg, or gif. Gifs will constantly play.
-                Full
-                initial size recommended.</p>
-            <input name="screenshots" id="screenshots" type="file" accept="image/gif, image/jpeg, image/png"
-                class="w-full p-1 px-2 rounded-2xl focus:outline-none border-2 border-gray-300" required
-                multiple><br><br>
+                Full initial size recommended.</p>
+            <input name="screenshots" id="screenshots" type="file" accept="image/gif, image/jpeg, image/png" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+                hover:border-gray-400 focus:outline-none appearance-none" required multiple><br><br>
 
 
 
@@ -125,24 +139,24 @@
 
 
 
-            <label for="app" class="text-xl">.app File<span class="text-red-600">*</span></label><br>
+            <label for="app" class="text-xl">.app File <span class="text-red-600">*</span></label><br>
             <p class="text-sm">Required, changeable.</p>
-            <input name="app" id="app" type="file" accept=".app"
-                class="w-full p-1 px-2 rounded-2xl focus:outline-none border-2 border-gray-300" required><br><br>
+            <input name="app" id="app" type="file" accept=".app" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+                hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
 
 
             <label for="zip" class="text-xl">.zip File <span class="text-red-600">*</span></label><br>
             <p class="text-sm">Required, changeable.</p>
-            <input name="zip" id="zip" type="file" accept=".zip"
-                class="w-full p-1 px-2 rounded-2xl focus:outline-none border-2 border-gray-300" required><br><br>
+            <input name="zip" id="zip" type="file" accept=".zip" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+                hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
 
 
             <label for="dmg" class="text-xl">.dmg File</label><br>
             <p class="text-sm">Optional, changeable. This will be the default download option, if provided.</p>
-            <input name="dmg" id="dmg" type="file" accept=".dmg"
-                class="w-full p-1 px-2 rounded-2xl focus:outline-none border-2 border-gray-300"><br><br>
+            <input name="dmg" id="dmg" type="file" accept=".dmg" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+                hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
 
 
@@ -156,33 +170,29 @@
             <p class="text-sm">Required, not changeable. (you will be able to make more releases, formatting
                 options:
                 [0-9\.]*)</p>
-            <input name="version" id="version" type="text"
-                class="w-full p-1 px-2 rounded-2xl focus:outline-none border-2 border-gray-300" required
-                pattern="^[0-9\.]*$"><br><br>
+            <input name="version" id="version" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+                hover:border-gray-400 focus:outline-none appearance-none" required pattern="^[0-9\.]*$"><br><br>
 
 
 
             <label for="title" class="text-xl">Release Title</label><br>
             <p class="text-sm">Optional, not changeable. (you will be able to make more releases; if not specified, the
                 title will be "v{{release_version}}")</p>
-            <input name="title" id="title" type="text"
-                class="w-full p-1 px-2 rounded-2xl focus:outline-none border-2 border-gray-300" required
-                pattern="^[0-9\.]*$"><br><br>
+            <input name="title" id="title" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+                hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
 
 
             <label for="notes" class="text-xl">Release Notes <span class="text-red-600">*</span></label><br>
-            <p class="text-sm">Required, not changeable. (you will be able to make more releases, markup supported)</p>
-            <textarea name="notes" id="notes" type="text"
-                class="w-full p-1 px-2 rounded-2xl focus:outline-none border-2 border-gray-300"
-                required></textarea><br><br>
+            <p class="text-sm">Required, not changeable. (you will be able to make more releases)</p>
+            <textarea name="notes" id="notes" type="text" class="w-full border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-5 bg-white
+                hover:border-gray-400 focus:outline-none appearance-none" required></textarea><br><br>
 
 
 
             <button class="bg-blue-600 px-8 py-2 text-white rounded-2xl shadow-xl" type="submit">Release
                 App</button><br>
-            <p class="text-sm py-2 px-2 pt-0 text-gray-600">Also, by creating a developer organization, you agree to the
-                developer Terms of Service.</p>
+            <p class="text-sm py-2 px-2 pt-0 text-gray-600">This might lag your computer, binaries can be big.</p>
         </div>
     </form>
 </div>

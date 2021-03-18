@@ -31,8 +31,26 @@ searchInput.addEventListener("keypress", function (event) {
     }
 });
 
-window.onkeyup = function (event) {
+document.onkeyup = function (event) {
     if (event.keyCode == 191) {
         searchInput.focus()
     }
 };
+
+function navClick() {
+    const nav = document.getElementById('nav')
+    const navDrop = document.getElementById('navDrop')
+
+    nav.classList.add('bg-gradient-to-r')
+    nav.classList.add('from-red-500')
+    nav.classList.add('to-purple-500')
+    nav.classList.add('text-white')
+    nav.classList.remove('bg-gray-100')
+    nav.classList.remove('text-gray-700')
+
+    navDrop.classList.remove('bg-white')
+    navDrop.classList.add('bg-gradient-to-r')
+    navDrop.classList.add('from-red-500')
+    navDrop.classList.add('to-purple-500')
+    navDrop.classList.add('text-white')
+}

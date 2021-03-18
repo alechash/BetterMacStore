@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const session = require('express-session')
 const passport = require('passport');
 const MS = require('express-mongoose-store')(session, mongoose);
+const fileUpload = require('express-fileupload');
+const path = require('path');
 
 require('dotenv').config()
 require('./config/passport')(passport)
@@ -22,6 +24,15 @@ app.use(session({
     })
 }));
 
+app.use(fileUpload({
+    useTempFiles: true,
+    debug: true,
+    limits: {
+        fileSize: 500 * 1024 * 1024
+    },
+    tempFileDir: path.join(__dirname, '/destroy/tmp/')
+}));
+
 app.set('views', 'views');
 app.set('view engine', 'ejs');
 
@@ -38,7 +49,6 @@ if (process.env.ENV == "p" || process.env.ENV == "production") {
     app.use('/app', require('./routes/app'))
     app.use('/dev', require('./routes/developer'))
     app.use('/', require('./routes/user'))
-
 }
 
 mongoose.connect(process.env.MONGO, {
