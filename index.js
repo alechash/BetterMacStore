@@ -16,9 +16,9 @@ app.use(require('body-parser').urlencoded({
     extended: true
 }));
 app.use(session({
-    secret: 'well, this is weird, please leave a message because we wont get back to you... simplytics',
-    resave: true,
-    saveUninitialized: true,
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
     store: new MS({
         ttl: 63113904000
     })
@@ -26,7 +26,7 @@ app.use(session({
 
 app.use(fileUpload({
     useTempFiles: true,
-    debug: true,
+    debug: false,
     limits: {
         fileSize: 500 * 1024 * 1024
     },
