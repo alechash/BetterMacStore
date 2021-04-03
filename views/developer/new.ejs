@@ -1,83 +1,74 @@
 <div class="box-header p-9 px-4 font-bold pt-12">
     <h1 class="text-3xl font-sans subpixel-antialiased diagonal-fractions tracking-wider py-3 pb-0">
-        Create an Organization
+        <%= Create_an_Organization %>
     </h1>
     <p class="text-gray-500 pt-0"><span class="px-4 text-gray-200 pl-0">/</span>dev<span
             class="px-4 text-gray-200">/</span>new
     </p>
     <form action="/dev/new" method="POST">
         <div class="w-full bg-gray-100 mt-8 p-6 rounded-xl font-normal">
-            <h1 class="text-2xl font-bold">General Information</h1><br>
+            <h1 class="text-2xl font-bold"><%= General_Information %></h1><br>
 
-            <label for="name" class="text-xl">Account Name <span class="text-red-600">*</span></label><br>
-            <p class="text-sm">You will NOT be able to change this later, choose wisely. This will appear as
+            <label for="name" class="text-xl"><%= Account_Name %> <span class="text-red-600">*</span></label><br>
+            <p class="text-sm"><%= You_will_NOT_be_able_to_change_this_later_choose_wisely_This_will_appear_as %>
                 /dev/:accountName</p>
-            <input name="name" id="name" type="text"
-                class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <input name="name" id="name" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
-            <label for="legal" class="text-xl">Legal Company Name</label><br>
-            <p class="text-sm">If this is a personal account, this is not required.</p>
-            <input name="legal" id="legal" type="text"
-                class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <label for="legal" class="text-xl"><%= Legal_Company_Name %></label><br>
+            <p class="text-sm"><%= If_this_is_a_personal_account_this_is_not_required %></p>
+            <input name="legal" id="legal" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
-            <label for="email" class="text-xl">Contact Email <span class="text-red-600">*</span></label><br>
-            <p class="text-sm">This will be public. This can be changed later.</p>
-            <input name="email" id="email" type="email"
-                class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <label for="email" class="text-xl"><%= Contact_Email %> <span class="text-red-600">*</span></label><br>
+            <p class="text-sm"><%= This_will_be_public %>. <%= This_can_be_changed_later %>.</p>
+            <input name="email" id="email" type="email" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
-            <label for="phone" class="text-xl">Phone Number</label><br>
-            <p class="text-sm">This is optional. You can use it for text notifications.</p>
-            <input name="phone" id="phone" type="tel"
-                class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <label for="phone" class="text-xl"><%= Phone_Number %></label><br>
+            <p class="text-sm"><%= This_is_optional %>. <%= You_can_use_it_for_text_notifications %>.</p>
+            <input name="phone" id="phone" type="tel" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
-            <h1 class="text-2xl font-bold">Optional Information</h1><br>
+            <h1 class="text-2xl font-bold"><%= Optional_Information %></h1><br>
 
-            <label for="website" class="text-xl">Website</label><br>
-            <p class="text-sm">This will be public. This can be changed later.</p>
-            <input name="website" id="website" type="url"
-                class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <label for="website" class="text-xl"><%= Website %></label><br>
+            <p class="text-sm"><%= This_will_be_public %>. <%= This_can_be_changed_later %>.</p>
+            <input name="website" id="website" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
-            <label for="twitter" class="text-xl">Twitter Username</label><br>
-            <p class="text-sm">This will be public. This can be changed later.</p>
-            <input name="twitter" id="twitter" type="text"
-                class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <label for="twitter" class="text-xl"><%= Twitter_Username %></label><br>
+            <p class="text-sm"><%= This_will_be_public %>. <%= This_can_be_changed_later %>.</p>
+            <input name="twitter" id="twitter" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" value="@"><br><br>
 
-            <label for="location" class="text-xl">Location</label><br>
-            <p class="text-sm">This will be public. This can be changed later.</p>
-            <input name="location" id="location" type="text"
-                class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <label for="location" class="text-xl"><%= Location %></label><br>
+            <p class="text-sm"><%= This_will_be_public %>. <%= This_can_be_changed_later %>.</p>
+            <input name="location" id="location" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
-            <h1 class="text-2xl font-bold">Other Stores</h1><br>
+            <h1 class="text-2xl font-bold"><%= Other_Stores %></h1><br>
 
-            <label for="apple" class="text-xl">Apple App Store URL</label><br>
-            <p class="text-sm">This will be public. This can be changed later.</p>
-            <input name="apple" id="apple" type="url"
-                class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <label for="apple" class="text-xl"><%= Apple_App_Store_URL %></label><br>
+            <p class="text-sm"><%= This_will_be_public %>. <%= This_can_be_changed_later %>.</p>
+            <input name="apple" id="apple" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
-            <label for="android" class="text-xl">Android App Store URL</label><br>
-            <p class="text-sm">This will be public. This can be changed later.</p>
-            <input name="android" id="android" type="url"
-                class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <label for="android" class="text-xl"><%= Android_App_Store_URL %></label><br>
+            <p class="text-sm"><%= This_will_be_public %>. <%= This_can_be_changed_later %>.</p>
+            <input name="android" id="android" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
-            <label for="microsoft" class="text-xl">Microsoft Store URL</label><br>
-            <p class="text-sm">This will be public. This can be changed later.</p>
-            <input name="microsoft" id="microsoft" type="url"
-                class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <label for="microsoft" class="text-xl"><%= Microsoft_Store_URL %></label><br>
+            <p class="text-sm"><%= This_will_be_public %>. <%= This_can_be_changed_later %>.</p>
+            <input name="microsoft" id="microsoft" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
-            <button class="bg-blue-600 px-8 py-2 text-white rounded-2xl shadow-xl" type="submit">Create
-                Organization</button><br>
-            <p class="text-sm py-2 px-2 pt-0 text-gray-600">Also, by creating a developer organization, you agree to the
-                developer Terms of Service.</p>
+            <button class="bg-blue-600 px-8 py-2 text-white rounded-2xl shadow-xl" type="submit">
+                <%= Create_Organization %>
+            </button><br>
+            <p class="text-sm py-2 px-2 pt-0 text-gray-600">
+                <%= Also_by_creating_a_developer_organization_you_agree_to_the_developer_Terms_of_Service %></p>
         </div>
     </form>
 </div>

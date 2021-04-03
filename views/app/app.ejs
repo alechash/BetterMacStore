@@ -9,7 +9,7 @@
                 <%= app.meta.name %>
                 <a href="/app/<%= app.unique.appId %>/download/latest"
                     class="absolute right-16 text-sm mt-5 bg-blue-600 rounded-2xl p-1 px-3 pt-1.5 text-sm uppercase font-bold cursor-pointer shadow-2xl text-white"
-                    download>download</a>
+                    download><%= Download %></a>
             </h1>
             <p class="text-gray-500 pt-0">
                 <!--
@@ -23,7 +23,7 @@
 
 
 
-                <span class="pr-1 pr-0 text-gray-300 text-xs">by</span>
+                <span class="pr-1 pr-0 text-gray-300 text-xs"><%= by %></span>
                 <a href="/dev/<%= app.meta.developer %>" class="hover:underline">
                     <span class="text-gray-500"><%= app.meta.developer %></span>
                 </a>
@@ -35,17 +35,17 @@
         </div>
         <hr class="mt-2 mb-6">
         <div id="apps mt-3">
-            <h2 class="text-2xl">Preview</h2>
-            <h2 class="text-2xl">Description</h2>
+            <h2 class="text-2xl"><%= Preview %></h2>
+            <h2 class="text-2xl"><%= Description %></h2>
             <p class="ml-2 mt-2 font-normal" id="desc"></p>
-            <h2 class="text-2xl">Releases</h2>
+            <h2 class="text-2xl"><%= Releases %></h2>
             <% for(i=0; i < releases.length; i ++) { %>
             <div class="p-6 bg-gray-100 rounded-2xl">
                 <h2 class="text-md"><%= releases[i].title %>
                     <a href="/app/<%= app.unique.appId %>/download/<%= releases[i]._id %>"
                         class="absolute right-20 text-sm mt-0 bg-blue-600 rounded-2xl p-1 px-3 pt-1.5 text-sm uppercase font-bold cursor-pointer shadow-2xl text-white"
-                        download>download this version</a></h2>
-                <p class="font-normal text-xs text-gray-600">Version <%= releases[i].version %></p>
+                        download><%= download_this_version %></a></h2>
+                <p class="font-normal text-xs text-gray-600"><%= Version %> <%= releases[i].version %></p>
                 <p class="font-normal text-sm"><%= releases[i].description %></p>
             </div>
             <% } %>

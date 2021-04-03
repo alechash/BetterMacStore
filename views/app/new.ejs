@@ -1,6 +1,6 @@
 <div class="box-header p-9 px-4 font-bold pt-12">
     <h1 class="text-3xl font-sans subpixel-antialiased diagonal-fractions tracking-wider py-3 pb-0">
-        Release an App
+        <%= Release_an_App %>
     </h1>
     <p class="text-gray-500 pt-0"><span class="px-4 text-gray-200 pl-0">/</span>app<span
             class="px-4 text-gray-200">/</span>new
@@ -8,12 +8,12 @@
     <form action="/app/new" method="POST" enctype="multipart/form-data">
         <div class="w-full bg-gray-100 mt-8 p-6 rounded-xl font-normal">
 
-            <h1 class="text-2xl font-bold">General Information</h1><br>
+            <h1 class="text-2xl font-bold"><%= General_Information %></h1><br>
 
 
 
-            <label for="org" class="text-xl">Organization <span class="text-red-600">*</span></label><br>
-            <p class="text-sm">This can be changed later.</p>
+            <label for="org" class="text-xl"><%= Organization %> <span class="text-red-600">*</span></label><br>
+            <p class="text-sm"><%= You_can_transfer_apps_to_other_organizations_or_accounts %>.</p>
             <div class="relative inline-flex">
                 <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 412 232">
@@ -22,7 +22,7 @@
                         fill="#648299" fill-rule="nonzero" /></svg>
                 <select id="org" name="org"
                     class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none">
-                    <option value="me">Personal Account</option>
+                    <option value="me"><%= Personal_Account %></option>
                     <% for(i=0; i < user.developer.organizations.length; i++) { %>
                     <option value="<%= user.developer.organizations[i] %>">@<%= user.developer.organizations[i] %>
                     </option>
@@ -32,167 +32,174 @@
 
 
 
-            <label for="name" class="text-xl">App Name <span class="text-red-600">*</span></label><br>
-            <p class="text-sm">This can be changed later.</p>
+            <label for="name" class="text-xl"><%= App_Name %> <span class="text-red-600">*</span></label><br>
+            <p class="text-sm"><%= This_can_be_changed_later %>.</p>
             <input name="name" id="name" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
 
 
-            <label for="copy" class="text-xl">Copyright Year <span class="text-red-600">*</span></label><br>
-            <p class="text-sm">This can be changed later. (use <i>{{current}}</i> for it to always be the current
-                year)</p>
+            <label for="copy" class="text-xl"><%= Copyright_Year %> <span class="text-red-600">*</span></label><br>
+            <p class="text-sm"><%= This_can_be_changed_later %>.
+                (<%- use_icurrenti_for_it_to_always_be_the_current_year %>)
+            </p>
             <input name="copy" id="copy" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
 
 
-            <label for="website" class="text-xl">Website</label><br>
-            <p class="text-sm">Optional, changeable.</p>
+            <label for="website" class="text-xl"><%= Website %></label><br>
+            <p class="text-sm"><%= Optional_changeable %></p>
             <input name="website" id="website" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
 
 
-            <label for="description" class="text-xl">Description <span class="text-red-600">*</span></label><br>
-            <p class="text-sm">Required, changeable.
+            <label for="description" class="text-xl"><%= Description %> <span class="text-red-600">*</span></label><br>
+            <p class="text-sm"><%= Required_changeable %>
             </p>
             <textarea name="description" id="description" type="text" class="w-full border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required></textarea><br><br>
 
 
 
-            <label for="license" class="text-xl">License</label><br>
-            <p class="text-sm">Optional, changeable. This is mostly used for open-source projects.</p>
+            <label for="license" class="text-xl"><%= License %></label><br>
+            <p class="text-sm"><%= Optional_changeable %> <%= This_is_mostly_used_for_open_source_projects %></p>
             <input name="license" id="license" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
 
 
-            <label for="repo" class="text-xl">Repository</label><br>
-            <p class="text-sm">Optional, changeable. This is normally a GitHub link or another git-scm instance.</p>
+            <label for="repo" class="text-xl"><%= Repository %></label><br>
+            <p class="text-sm"><%= Optional_changeable %>
+                <%= This_is_normally_a_GitHub_link_or_another_git_scm_instance %>
+            </p>
             <input name="repo" id="repo" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
 
 
-            <h1 class="text-2xl font-bold">Legal</h1><br>
+            <h1 class="text-2xl font-bold"><%= Legal %></h1><br>
 
 
 
-            <label for="privacy" class="text-xl">Privacy Policy <span class="text-red-600">*</span></label><br>
-            <p class="text-sm">Required, changeable.</p>
+            <label for="privacy" class="text-xl"><%= Privacy_Policy %> <span class="text-red-600">*</span></label><br>
+            <p class="text-sm"><%= Required_changeable %></p>
             <input name="privacy" id="privacy" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
 
 
-            <label for="terms" class="text-xl">Terms of Service</label><br>
-            <p class="text-sm">Optional, changeable.</p>
+            <label for="terms" class="text-xl"><%= Terms_of_Service %></label><br>
+            <p class="text-sm"><%= Optional_changeable %></p>
             <input name="terms" id="terms" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
 
 
-            <label for="gdpr" class="text-xl">GDPR Policies</label><br>
-            <p class="text-sm">Optional, changeable.</p>
+            <label for="gdpr" class="text-xl"><%= GDPR_Policies %></label><br>
+            <p class="text-sm"><%= Optional_changeable %></p>
             <input name="gdpr" id="gdpr" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
 
 
-            <h1 class="text-2xl font-bold">Other Stores</h1><br>
+            <h1 class="text-2xl font-bold"><%= Other_Stores %></h1><br>
 
 
 
-            <label for="apple" class="text-xl">Apple App Store URL</label><br>
-            <p class="text-sm">This will be public. This can be changed later.</p>
+            <label for="apple" class="text-xl"><%= Apple_App_Store_URL %></label><br>
+            <p class="text-sm"><%= This_will_be_public %>. <%= This_can_be_changed_later %>.</p>
             <input name="apple" id="apple" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
 
 
-            <h1 class="text-2xl font-bold">Images</h1><br>
+            <h1 class="text-2xl font-bold"><%= Images %></h1><br>
 
 
 
-            <label for="icon" class="text-xl">App Icon <span class="text-red-600">*</span></label><br>
-            <p class="text-sm">Required, changeable. This can be a png, jpeg, or gif. Gifs will play on hover.
-                512px by 512px recommended.</p>
+            <label for="icon" class="text-xl"><%= App_Icon %> <span class="text-red-600">*</span></label><br>
+            <p class="text-sm"><%= Required_changeable %> <%= This_can_be_a_png_jpeg_or_gif %>
+                <%= Gifs_will_play_on_hover %>
+                <%= _512px_by_512px_recommended %></p>
             <input name="icon" id="icon" type="file" accept="image/gif, image/jpeg, image/png" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
 
 
-            <label for="screenshots" class="text-xl">Screenshots <span class="text-red-600">*</span></label><br>
-            <p class="text-sm">Required, changeable. This can be a png, jpeg, or gif. Gifs will constantly play.
-                Full initial size recommended.</p>
+            <label for="screenshots" class="text-xl"><%= Screenshots %> <span class="text-red-600">*</span></label><br>
+            <p class="text-sm"><%= Required_changeable %> <%= This_can_be_a_png_jpeg_or_gif %>
+                <%= Gifs_will_constantly_play %> <%= Full_initial_size_recommended %></p>
             <input name="screenshots" id="screenshots" type="file" accept="image/gif, image/jpeg, image/png" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required multiple><br><br>
 
 
 
-            <h1 class="text-2xl font-bold">Binaries</h1>
-            <p class="text-sm">The .app and .zip files are required. If a .dmg file is provided, it will be the default
-                download. Otherwise, the .app file will be default. If more than one option is provided, the downloader
-                will be able to choose.</p><br>
+            <h1 class="text-2xl font-bold"><%= Binaries %></h1>
+            <p class="text-sm"><%= The_app_and_zip_files_are_required %>
+                <%= If_a_dmg_file_is_provided_it_will_be_the_default_download %>
+                <%= Otherwise_the_app_file_will_be_default %>
+                <%= If_more_than_one_option_is_provided_the_downloader_will_be_able_to_choose %></p><br>
 
 
 
-            <label for="app" class="text-xl">.app File <span class="text-red-600">*</span></label><br>
-            <p class="text-sm">Required, changeable.</p>
+            <label for="app" class="text-xl"><%= app_File %> <span class="text-red-600">*</span></label><br>
+            <p class="text-sm"><%= Required_changeable %></p>
             <input name="app" id="app" type="file" accept=".app" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
 
 
-            <label for="zip" class="text-xl">.zip File <span class="text-red-600">*</span></label><br>
-            <p class="text-sm">Required, changeable.</p>
+            <label for="zip" class="text-xl"><%= zip_File %> <span class="text-red-600">*</span></label><br>
+            <p class="text-sm"><%= Required_changeable %></p>
             <input name="zip" id="zip" type="file" accept=".zip" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
 
 
-            <label for="dmg" class="text-xl">.dmg File</label><br>
-            <p class="text-sm">Optional, changeable. This will be the default download option, if provided.</p>
+            <label for="dmg" class="text-xl"><%= dmg_File %></label><br>
+            <p class="text-sm"><%= Optional_changeable %> <%= This_will_be_the_default_download_option_if_provided %>
+            </p>
             <input name="dmg" id="dmg" type="file" accept=".dmg" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
 
 
-            <h1 class="text-2xl font-bold">First Release</h1>
-            <p class="text-sm">This will show up as the first release. The above uploaded binaries will be considered
-                part of the first release.</p><br>
+            <h1 class="text-2xl font-bold"><%= First_Release %></h1>
+            <p class="text-sm"><%= This_will_show_up_as_the_first_release %>
+                <%= The_above_uploaded_binaries_will_be_considered_part_of_the_first_release %></p><br>
 
 
 
-            <label for="version" class="text-xl">Release Version <span class="text-red-600">*</span></label><br>
-            <p class="text-sm">Required, not changeable. (you will be able to make more releases, formatting
-                options:
+            <label for="version" class="text-xl"><%= Release_Version %> <span class="text-red-600">*</span></label><br>
+            <p class="text-sm"><%= Required_not_changeable %> (<%= you_will_be_able_to_make_more_releases %>,
+                <%= formatting_options %>
                 [0-9\.]*)</p>
             <input name="version" id="version" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required pattern="^[0-9\.]*$"><br><br>
 
 
 
-            <label for="title" class="text-xl">Release Title</label><br>
-            <p class="text-sm">Optional, not changeable. (you will be able to make more releases; if not specified, the
-                title will be "v{{release_version}}")</p>
+            <label for="title" class="text-xl"><%= Release_Title %></label><br>
+            <p class="text-sm"><%= Optional_not_changeable %> (<%= you_will_be_able_to_make_more_releases %>;
+                <%= if_not_specified_the_title_will_be %> "v{{release_version}}")</p>
             <input name="title" id="title" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
 
 
-            <label for="notes" class="text-xl">Release Notes <span class="text-red-600">*</span></label><br>
-            <p class="text-sm">Required, not changeable. (you will be able to make more releases)</p>
+            <label for="notes" class="text-xl"><%= Release_Notes %> <span class="text-red-600">*</span></label><br>
+            <p class="text-sm"><%= Required_not_changeable %> (<%= you_will_be_able_to_make_more_releases %>)</p>
             <textarea name="notes" id="notes" type="text" class="w-full border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required></textarea><br><br>
 
 
 
-            <button class="bg-blue-600 px-8 py-2 text-white rounded-2xl shadow-xl" type="submit">Release
-                App</button><br>
-            <p class="text-sm py-2 px-2 pt-0 text-gray-600">This might lag your computer, binaries can be big.</p>
+            <button class="bg-blue-600 px-8 py-2 text-white rounded-2xl shadow-xl" type="submit">
+                <%= Release_App %>
+            </button><br>
+            <p class="text-sm py-2 px-2 pt-0 text-gray-600"><%= This_might_lag_your_computer_binaries_can_be_big %></p>
         </div>
     </form>
 </div>

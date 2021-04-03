@@ -1,37 +1,38 @@
 <div class="w-full text-left p-6 bg-gray-800 text-white">
     <div class="grid grid-cols-3 gap-4">
         <div>
-            <h3 class="text-xl font-bold">Tutorials</h3>
-            <a href="/tut/unidentified-developer" class="text-white underline">Why won't my computer let me open the
-                app?</a><br>
-            <a href="/tut/make-an-app" class="text-white underline">How do I make apps?</a>
+            <h3 class="text-xl font-bold"><%= Tutorials %></h3>
+            <a href="/tut/unidentified-developer"
+                class="text-white underline"><%= Why_wont_my_computer_let_me_open_the_app %></a><br>
+            <a href="/tut/make-an-app" class="text-white underline"><%= How_do_I_make_apps %></a>
         </div>
         <div>
-            <h3 class="text-xl font-bold">FAQ</h3>
+            <h3 class="text-xl font-bold"><%= Frequently_Asked_Questions %></h3>
         </div>
         <div>
-            <h3 class="text-xl font-bold">FAQ</h3>
+            <h3 class="text-xl font-bold"><%= Frequently_Asked_Questions %></h3>
         </div>
     </div>
 </div>
 <div class="w-full text-center p-6 bg-blue-600 text-white">
     <span>
-        <a href="http://bruggg.com" class="text-white">A
+        <a href="http://bruggg.com" class="text-white"><%= A %>
             <span class="underline font-bold" title="Bruggg">Bruggg</span>
-            Project
+            <%= Project %>
         </a><br><br>
         <span class="text-white">
+            <a href="/donate" class="text-white underline">
+                <%= Donate %></a> •
             <a href="http://bruggg.com/case-study/better-mac-store" class="text-white underline">
-                Manifest</a> •
+                <%= Manifest %></a> •
             <a href="https://github.com/bruggg/bettermacstore" class="text-white underline">
                 GitHub</a> •
             <a href="http://bruggg.com/case-study/better-mac-store#technologies" class="text-white underline">
-                Technologies Used</a> •
-            <a class="text-white">
-                Built for Developers by Developers</a>
+                <%= Technologies_Used %></a>
         </span><br><br>
-        <span class="text-white">Because the real one absolutely <span class="underline">sucks</span>.
+        <span class="text-white"><%= Because_the_real_one_absolutely %> <span class="underline"><%= sucks %></span>.
         </span><br><br>
+        <span class="text-white"><%= Built_for_Developers_by_Developers %>.</span><br><br>
         <div class="relative inline-flex">
             <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 412 232">
@@ -115,9 +116,9 @@
             </select>
         </div>
         <button class="border border-gray-600 rounded-full text-gray-300 h-10 pl-5 pr-5 bg-black hover:border-gray-500
-                focus:outline-none">Go</button><br><br>
+                focus:outline-none"><%= Go %></button><br><br>
         <a href="http://github.com/bruggg/bettermacstore/blob/main/TRANSLATIONS.md" class="text-white">
-            Help Translate
+            <%= Help_Translate %>
         </a><br>
     </span>
 </div>

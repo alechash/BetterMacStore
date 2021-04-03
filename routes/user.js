@@ -13,6 +13,16 @@ const url = require('url');
 
 var about = {}
 router.get('/*', async function (req, res, next) {
+    var userLanguage;
+    if (req.user) {
+        userLanguage = req.user.personal.language
+    } else {
+        userLanguage = 'english'
+    }
+
+    const languageFile = require(`../translations/${userLanguage}`)
+
+    about = languageFile
     about.name = Name
     about.path = req.path
     about.loggedin = await funcs.loggedin(req.user)

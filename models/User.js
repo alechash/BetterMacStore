@@ -17,6 +17,12 @@ const User = new mongoose.Schema({
             unique: false,
             required: true
         },
+        language: {
+            type: String,
+            unique: false,
+            required: true,
+            default: 'English'
+        },
     },
     developer: {
         developerEnabled: {

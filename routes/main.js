@@ -9,6 +9,16 @@ const funcs = require('../config/functions');
 
 var about = {}
 router.get('/*', async function (req, res, next) {
+    var userLanguage;
+    if (req.user) {
+        userLanguage = req.user.personal.language
+    } else {
+        userLanguage = 'english'
+    }
+
+    const languageFile = require(`../translations/${userLanguage}`)
+
+    about = languageFile
     about.name = Name
     about.path = req.path
     about.loggedin = await funcs.loggedin(req.user)
@@ -25,6 +35,13 @@ router.get('/*', async function (req, res, next) {
 router.get('/', function (req, res, next) {
     about.title = 'Home'
     about.template = 'main/index'
+
+    return res.render('base', about);
+});
+
+router.get('/donate', function (req, res, next) {
+    about.title = 'Donate'
+    about.template = 'main/donate'
 
     return res.render('base', about);
 });
