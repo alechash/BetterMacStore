@@ -43,6 +43,18 @@ router.get('/new', async function (req, res, next) {
 })
 
 router.post('/new', async function (req, res, next) {
+    const myOrgs = req.user.developer.organizations
+    const org = req.body.org
+    const name = req.body.name
+    const description = req.body.description
+    const appId = Math.floor(1000000 + Math.random() * 9000000)
+
+    myOrgs.push('me')
+
+    if (!myOrgs.includes(org)) {
+        return res.send('Error: you are not part of the ' + org + ' organization<br><br>Tip: you can just press the back button and the input fields will have your inputed data ;)')
+    }
+
     organization = true
 
     if (!req.user.developer.organizations.includes(req.body.org) || !req.body.org == 'me') {
@@ -56,23 +68,26 @@ router.post('/new', async function (req, res, next) {
 
     const newApp = new Application({
         meta: {
-            developer: req.body.org,
+            developer: org,
             org: organization,
-            name: req.body.name,
-            description: req.body.description,
-            creationDate: Date.now(),
-            name: req.body.name
+            name: name,
+            description: description,
+            creationDate: Date.now()
         },
         unique: {
-            appId: Math.floor(1000000 + Math.random() * 9000000)
+            appId: appId
         }
     })
 
+    const version = req.body.version
+    const releaseTitle = req.body.title
+    const releaseNotes = req.body.notes
+
     const newRelease = new Release({
-        app: newApp.unique.appId,
-        version: req.body.version,
-        description: req.body.notes,
-        title: req.body.title,
+        app: appId,
+        version: version,
+        description: releaseNotes,
+        title: releaseTitle,
         creationDate: Date.now(),
         binaries: {
             app: req.files.app.tempFilePath,
@@ -85,7 +100,7 @@ router.post('/new', async function (req, res, next) {
     }
 
     const newIcon = new Image({
-        app: newApp.unique.appId,
+        app: appId,
         type: 'icon',
         creationDate: Date.now(),
         url: req.files.icon.tempFilePath
@@ -95,7 +110,7 @@ router.post('/new', async function (req, res, next) {
 
     for (i = 0; i < req.files.screenshots.length; i++) {
         const newImage = new Image({
-            app: newApp.unique.appId,
+            app: appId,
             type: 'screenshot',
             creationDate: Date.now(),
             url: req.files.screenshots[i].tempFilePath

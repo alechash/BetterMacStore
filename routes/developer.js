@@ -62,6 +62,14 @@ router.post('/new', async function (req, res, next) {
     const android = req.body.android
     const microsoft = req.body.microsoft
 
+    const orgExists = await Company.exists({
+        'general.name': name
+    })
+
+    if (orgExists == true) {
+        return res.send('Error: that organization name is already taken<br><br>Tip: just hit the back button in your browser and the inputs will still have the data in them ;)')
+    }
+
     const newCompany = new Company({
         'general.name': name.toLowerCase(),
         'general.legalName': legalName,
