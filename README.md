@@ -8,6 +8,9 @@
 
 # Table of Contents
 
+<details>
+<summary>Click me to view the TOC</summary>
+
 * [Features](#features)
 * [Translating](#translating)
     * [Translating Apps](#translating-apps)
@@ -38,6 +41,7 @@
     * [Litecoin](#litecoin)
     * [Basic Attention Token](#basic-attention-token)
 * [License](#license)
+</details>
 
 <img src="/public/img/divider.png" height="20px" width="100%">
 
@@ -145,7 +149,7 @@ All config files are available in the `./config` folder
 ### Modals
 Misspelled from `modal` on day one, too late to rename the folder
 
-All modal files are available in the `./moels` folder
+All modal files are available in the `./models` folder
 
 <img src="/public/img/divider.png" height="20px" width="100%">
 
