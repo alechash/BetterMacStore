@@ -13,16 +13,10 @@ const url = require('url');
 
 var about = {}
 router.get('/*', async function (req, res, next) {
-    var userLanguage;
-    if (req.user) {
-        userLanguage = req.user.personal.language
-    } else {
-        userLanguage = 'english'
-    }
+    // add language variables to EJS file
+    about = funcs.language(req.user)
 
-    const languageFile = require(`../translations/${userLanguage}`)
-
-    about = languageFile
+    // define some defaults for the EJS files
     about.name = Name
     about.path = req.path
     about.loggedin = await funcs.loggedin(req.user)
@@ -47,6 +41,7 @@ router.get('/signup', function (req, res, next) {
 });
 
 router.post('/signup', (req, res) => {
+    // recieve user inputed data from signup field
     const {
         email,
         password,
@@ -54,10 +49,12 @@ router.post('/signup', (req, res) => {
         name
     } = req.body;
 
+    // if there is any missing data, throw error
     if (!email || !password || !password2) {
         return '{"type": "error", "message": "Please fill out all fields."}'
     }
 
+    // if passwords dont match
     if (password != password2) {
         return res.redirect(url.format({
             pathname: "/signup",
@@ -67,6 +64,7 @@ router.post('/signup', (req, res) => {
         }))
     }
 
+    // if  password length is less than eight
     if (password.length < 8) {
         return res.redirect(url.format({
             pathname: "/signup",
@@ -76,10 +74,12 @@ router.post('/signup', (req, res) => {
         }))
     }
 
+    // find if user already exists
     User.findOne({
         'personal.email': email
     }).then(user => {
         if (user) {
+            // if user exists, cancel the signup
             return res.redirect(url.format({
                 pathname: "/signup",
                 query: {
@@ -87,6 +87,7 @@ router.post('/signup', (req, res) => {
                 }
             }))
         } else {
+            // else create a new user
             const newUser = new User({
                 'personal.email': email,
                 'personal.password': password,
@@ -94,6 +95,7 @@ router.post('/signup', (req, res) => {
                 'meta.creationDate': Date.now(),
             });
 
+            // encrypt the password user 10 gen salt hash
             bcrypt.genSalt(10, (err, salt) => {
                 bcrypt.hash(newUser.personal.password, salt, (err, hash) => {
                     newUser.personal.password = hash;
@@ -110,10 +112,12 @@ router.post('/signup', (req, res) => {
 });
 
 router.get('/login', function (req, res, next) {
+    // authenticate the user using passport (see, /config/passport.js)
     passport.authenticate('local', {
         failureRedirect: '/login'
     })
 
+    // if the user is already logged in, redirect to home page
     if (req.user) {
         return res.redirect('/');
     }
@@ -133,11 +137,13 @@ router.get('/login', function (req, res, next) {
 
 router.post('/login', async function (req, res, next) {
     try {
+        // try and authenticate the user, redirect depending on outcome
         passport.authenticate('local', {
             successRedirect: '/',
             failureRedirect: '/login',
         })(req, res, next);
     } catch (err) {
+        // catch the error and tell the user
         res.redirect(url.format({
             pathname: "/login",
             query: {
@@ -148,7 +154,9 @@ router.post('/login', async function (req, res, next) {
 });
 
 router.get('/logout', (req, res) => {
+    // log the user out
     req.logout();
+
     res.redirect('/login');
 });
 

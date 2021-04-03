@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// modal for developer organizations
 const Company = new mongoose.Schema({
     general: {
         name: {

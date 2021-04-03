@@ -1,3 +1,4 @@
+// function to return boolean if a user is loggedin
 const loggedin = function (user) {
     if (user) {
         return true;
@@ -6,6 +7,8 @@ const loggedin = function (user) {
     };
 };
 
+
+// function to return a boolean if a user is staff
 const staff = function (user) {
     if (loggedin(user) == true && user.meta.staff == true) {
         return true;
@@ -14,16 +17,31 @@ const staff = function (user) {
     };
 };
 
-const needLoggedin = function (user) {
-    if (user) {
-        
+
+// redirect people to /login if they arent logged in
+const needLoggedin = function (user, res, next) {
+    if (!user) {
+        return res.redirect('/login')
     } else {
-        next()
+        return next()
     }
+}
+
+// function to return the language of the logged in user (defaults to english)
+const language = function (user) {
+    var userLanguage;
+    if (user) {
+        userLanguage = user.personal.language
+    } else {
+        userLanguage = 'english'
+    }
+
+    return require(`../translations/${userLanguage}`)
 }
 
 module.exports = {
     loggedin,
     staff,
-    needLoggedin
+    needLoggedin,
+    language
 };

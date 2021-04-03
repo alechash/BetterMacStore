@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// modal for applications
 const Application = new mongoose.Schema({
     meta: {
         developer: {

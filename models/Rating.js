@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// modal for ratings for different applications
 const Rating = new mongoose.Schema({
     from: {
         type: String,

@@ -12,16 +12,10 @@ const funcs = require('../config/functions');
 
 var about = {}
 router.get('/*', async function (req, res, next) {
-    var userLanguage;
-    if (req.user) {
-        userLanguage = req.user.personal.language
-    } else {
-        userLanguage = 'english'
-    }
+    // add language variables to EJS file
+    about = funcs.language(req.user)
 
-    const languageFile = require(`../translations/${userLanguage}`)
-
-    about = languageFile
+    // define some defaults for the EJS files
     about.name = Name
     about.path = req.path
     about.loggedin = await funcs.loggedin(req.user)
@@ -36,6 +30,9 @@ router.get('/*', async function (req, res, next) {
 });
 
 router.get('/new', async function (req, res, next) {
+    // if no user, redirect to login page
+    funcs.needLoggedin(req.user, res, next)
+
     about.title = 'Release an App'
     about.template = 'app/new'
 
@@ -43,18 +40,25 @@ router.get('/new', async function (req, res, next) {
 })
 
 router.post('/new', async function (req, res, next) {
+    // if no user, redirect to login page
+    funcs.needLoggedin(req.user, res, next)
+
+    // get data from the request body
     const myOrgs = req.user.developer.organizations
     const org = req.body.org
     const name = req.body.name
     const description = req.body.description
     const appId = Math.floor(1000000 + Math.random() * 9000000)
 
+    // BEGIN: check to see if user has access to the organization the app will be made for
     myOrgs.push('me')
 
     if (!myOrgs.includes(org)) {
         return res.send('Error: you are not part of the ' + org + ' organization<br><br>Tip: you can just press the back button and the input fields will have your inputed data ;)')
     }
+    // END: check to see if user has access to the organization the app will be made for
 
+    // BEGIN: see if the app is made for an organization or personal account
     organization = true
 
     if (!req.user.developer.organizations.includes(req.body.org) || !req.body.org == 'me') {
@@ -65,7 +69,9 @@ router.post('/new', async function (req, res, next) {
         req.body.org = req.user._id
         organization = false
     }
+    // END: see if the app is made for an organization or personal account
 
+    // create a new application template
     const newApp = new Application({
         meta: {
             developer: org,
@@ -79,10 +85,13 @@ router.post('/new', async function (req, res, next) {
         }
     })
 
+    // this will be the initial release for the app
+    // recieve more data from request body
     const version = req.body.version
     const releaseTitle = req.body.title
     const releaseNotes = req.body.notes
 
+    // create a new release template
     const newRelease = new Release({
         app: appId,
         version: version,
@@ -95,10 +104,13 @@ router.post('/new', async function (req, res, next) {
         },
     })
 
+    // check if a dmg was uploaded
     if (req.files.dmg) {
+        // if so, add it to the template
         newRelease.binaries.dmg = req.files.dmg.tempFilePath
     }
 
+    // create new app icon template
     const newIcon = new Image({
         app: appId,
         type: 'icon',
@@ -106,8 +118,10 @@ router.post('/new', async function (req, res, next) {
         url: req.files.icon.tempFilePath
     })
 
+    // save the icon
     newIcon.save()
 
+    // for each screenshot uploaded, create a new object in the database
     for (i = 0; i < req.files.screenshots.length; i++) {
         const newImage = new Image({
             app: appId,
@@ -119,6 +133,7 @@ router.post('/new', async function (req, res, next) {
         newImage.save()
     }
 
+    // update the latest release info
     newApp.meta.latestRelease = newRelease._id
 
     newRelease.save().then(release => {
@@ -129,19 +144,25 @@ router.post('/new', async function (req, res, next) {
 })
 
 router.get('/:id', async function (req, res, next) {
+    // finds the apps homepage
+
+    // find the actual app data
     const app = await Application.findOne({
         'unique.appId': req.params.id
     })
 
+    // find all the releases for the app
     const releases = await Release.find({
         app: req.params.id
     })
 
+    // finds the icon for the app
     const icon = await Image.findOne({
         app: req.params.id,
         type: 'icon'
     })
 
+    // finds the screenshots for the app
     const screenshots = await Image.find({
         app: req.params.id,
         type: 'screenshot'

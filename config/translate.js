@@ -1,3 +1,16 @@
+/**
+ * NOTE: this file shouldn't be changed, this file is used
+ * to add needed translations to translation files
+ * 
+ * This will ask the user for a English sentence, then wi-
+ * -th that sentence, it will go through all translation -
+ * -files and add an object to the file
+ * 
+ * 
+ * NOTE: translation files are housed in the /translations
+ * folder
+ */
+
 const readline = require('readline')
 const path = require('path');
 const fs = require('fs');

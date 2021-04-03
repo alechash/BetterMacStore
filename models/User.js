@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// modal for users
 const User = new mongoose.Schema({
     personal: {
         email: {

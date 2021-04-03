@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// modal for release notes for applications releases
 const ReleaseNotes = new mongoose.Schema({
     app: {
         type: String,

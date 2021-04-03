@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// modal for images (like app icons and screenshots)
 const Image = new mongoose.Schema({
     url: {
         type: String,

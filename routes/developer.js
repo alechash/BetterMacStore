@@ -12,16 +12,10 @@ const validator = require('validator');
 
 var about = {}
 router.get('/*', async function (req, res, next) {
-    var userLanguage;
-    if (req.user) {
-        userLanguage = req.user.personal.language
-    } else {
-        userLanguage = 'english'
-    }
+    // add language variables to EJS file
+    about = funcs.language(req.user)
 
-    const languageFile = require(`../translations/${userLanguage}`)
-
-    about = languageFile
+    // define some defaults for the EJS files
     about.name = Name
     about.path = req.path
     about.loggedin = await funcs.loggedin(req.user)
@@ -36,9 +30,8 @@ router.get('/*', async function (req, res, next) {
 });
 
 router.get('/new', function (req, res, next) {
-    if (!funcs.loggedin(req.user)) {
-        return res.redirect('/login')
-    }
+    // if no user, redirect to login page
+    funcs.needLoggedin(req.user, res, next)
 
     about.title = 'Create Developer Organization'
     about.template = 'developer/new'
@@ -47,10 +40,10 @@ router.get('/new', function (req, res, next) {
 });
 
 router.post('/new', async function (req, res, next) {
-    if (!funcs.loggedin(req.user)) {
-        return res.redirect('/login')
-    }
+    // if no user, redirect to login page
+    funcs.needLoggedin(req.user, res, next)
 
+    // get data from the body
     const name = req.body.name;
     const legalName = req.body.legal
     const email = req.body.email
@@ -62,14 +55,17 @@ router.post('/new', async function (req, res, next) {
     const android = req.body.android
     const microsoft = req.body.microsoft
 
+    // check if the organization exists
     const orgExists = await Company.exists({
         'general.name': name
     })
 
+    // if it does exist, tell them the error and a tip
     if (orgExists == true) {
         return res.send('Error: that organization name is already taken<br><br>Tip: just hit the back button in your browser and the inputs will still have the data in them ;)')
     }
 
+    // create new company template
     const newCompany = new Company({
         'general.name': name.toLowerCase(),
         'general.legalName': legalName,
@@ -89,8 +85,10 @@ router.post('/new', async function (req, res, next) {
         'stores.microsoft': microsoft,
     })
 
+    // add user to the organization
     req.user.developer.organizations.push(name.toLowerCase())
 
+    // finalize adding user to org
     const addUserToCompany = await User.findOneAndUpdate({
         _id: req.user._id
     }, {
@@ -99,12 +97,15 @@ router.post('/new', async function (req, res, next) {
 
     addUserToCompany
 
+    // save the new company to the database
     newCompany.save().then(company => {
         return res.redirect(`/dev/${company.general.name}`)
     })
 });
 
 router.get('/:name', async function (req, res, next) {
+    // going to a companies profile at /dev/:name
+
     about.title = req.params.name
     about.template = 'developer/company'
     about.company = await Company.findOne({
@@ -114,6 +115,11 @@ router.get('/:name', async function (req, res, next) {
     about.apps = await Application.find({
         'meta.developer': req.params.name
     })
+
+    // if the company doesnt exist, proceed to 404 page
+    if (!about.company) {
+        return next()
+    }
 
     return res.render('base', about);
 });

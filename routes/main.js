@@ -9,16 +9,10 @@ const funcs = require('../config/functions');
 
 var about = {}
 router.get('/*', async function (req, res, next) {
-    var userLanguage;
-    if (req.user) {
-        userLanguage = req.user.personal.language
-    } else {
-        userLanguage = 'english'
-    }
+    // add language variables to EJS file
+    about = funcs.language(req.user)
 
-    const languageFile = require(`../translations/${userLanguage}`)
-
-    about = languageFile
+    // define some defaults for the EJS files
     about.name = Name
     about.path = req.path
     about.loggedin = await funcs.loggedin(req.user)
