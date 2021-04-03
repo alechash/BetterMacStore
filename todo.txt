@@ -1,3 +1,0 @@
-[ ] form validation for creation of an organization (routes/developer)
-
-[ ] beta bonuses for initial development companies
