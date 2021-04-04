@@ -14,7 +14,7 @@ const url = require('url');
 var about = {}
 router.get('/*', async function (req, res, next) {
     // add language variables to EJS file
-    about = funcs.language(req.user)
+    about = funcs.language(req.user, req.cookies.language)
 
     // define some defaults for the EJS files
     about.name = Name

@@ -10,7 +10,7 @@ const funcs = require('../config/functions');
 var about = {}
 router.get('/*', async function (req, res, next) {
     // add language variables to EJS file
-    about = funcs.language(req.user)
+    about = funcs.language(req.user, req.cookies.language)
 
     // define some defaults for the EJS files
     about.name = Name
@@ -22,18 +22,19 @@ router.get('/*', async function (req, res, next) {
     about.footer = true
     about.analytics = process.env.ANALYTICS
     about.ga = process.env.GA_CODE
-
-    /////////////////////////////////////////////////////////
-    // ALL routes in this file require you to be logged in
-    /////////////////////////////////////////////////////////
-    funcs.needLoggedin(req.user, res, next)
 });
 
 router.get('/', function (req, res, next) {
+    // if no user, redirect to login page
+    funcs.needLoggedin(req.user, res, next)
+
     next()
 });
 
 router.get('/settings', function (req, res, next) {
+    // if no user, redirect to login page
+    funcs.needLoggedin(req.user, res, next)
+
     const user = req.user
 
     about.user = user
@@ -44,6 +45,9 @@ router.get('/settings', function (req, res, next) {
 });
 
 router.get('/settings/developer/toggle', function (req, res, next) {
+    // if no user, redirect to login page
+    funcs.needLoggedin(req.user, res, next)
+
     const user = req.user
 
     about.user = user
@@ -57,6 +61,9 @@ router.get('/settings/developer/toggle', function (req, res, next) {
 });
 
 router.get('/settings/developer/toggle/confirm', async function (req, res, next) {
+    // if no user, redirect to login page
+    funcs.needLoggedin(req.user, res, next)
+
     // confirm that the user wants to toggle the developer access
 
     const user = req.user
@@ -70,6 +77,32 @@ router.get('/settings/developer/toggle/confirm', async function (req, res, next)
     updateUser
 
     return res.redirect('/account/settings')
+});
+
+router.post('/settings/language', async function (req, res, next) {
+    // although this is an account route, if the user isnt logged in, we dont
+    // want to force them to signup to view the site in their own language
+    const loggedin = funcs.loggedin(req.user)
+
+    if (loggedin == true) {
+        const user = req.user
+        const language = funcs.changeLanguage(req.body.language)
+
+        const updateUser = await User.findByIdAndUpdate(user._id, {
+            // make the boolean the opposite of what it was
+            'personal.language': language
+        })
+
+        // save the updates
+        updateUser
+    } else {
+        res.cookie('language', funcs.changeLanguage(req.body.language), {
+            expires: new Date(Date.now() + 90000000000),
+            httpOnly: true
+        })
+    }
+
+    return res.redirect('/')
 });
 
 module.exports = router;
