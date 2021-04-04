@@ -2,7 +2,7 @@ const ejsLint = require('ejs-lint');
 const fs = require('fs');
 const path = require('path');
 
-var dir = path.join(__dirname, '..', '/views/');
+var dir = path.join(__dirname, '..', '..', '/views/');
 var ejsFiles = []
 
 const getAllFiles = function (dirPath, arrayOfFiles) {
