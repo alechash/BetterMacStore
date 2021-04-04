@@ -45,7 +45,14 @@ const language = function (user, languageCookie) {
         userLanguage = 'English'
     }
 
-    const langObject = require(`../i18n_compiled/${userLanguage}`)
+    var langObject;
+
+    // an attacker could change his encrypted cookies to maliciously access files we dont want it to
+    try {
+        langObject = require(`../i18n_compiled/${userLanguage}`)
+    } catch (err) {
+        langObject = require(`../i18n_compiled/English`)
+    }
 
     return langObject
 }

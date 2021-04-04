@@ -10,6 +10,13 @@ const {
     v4: uuidv4
 } = require('uuid');
 const url = require('url');
+const emailValid = require('node-email-validation');
+const RateLimit = require('express-rate-limit');
+
+const limiter = new RateLimit({
+    windowMs: 1 * 60 * 1000, // 1 minute
+    max: 5
+});
 
 var about = {}
 router.get('/*', async function (req, res, next) {
@@ -40,7 +47,7 @@ router.get('/signup', function (req, res, next) {
     return res.render('base', about);
 });
 
-router.post('/signup', (req, res) => {
+router.post('/signup', limiter, (req, res) => {
     // recieve user inputed data from signup field
     const {
         email,
@@ -48,6 +55,10 @@ router.post('/signup', (req, res) => {
         password2,
         name
     } = req.body;
+
+    if (emailValid.is_email_valid(email)) {} else {
+        return res.send('Error: email is not an email')
+    }
 
     // if there is any missing data, throw error
     if (!email || !password || !password2) {
@@ -112,11 +123,6 @@ router.post('/signup', (req, res) => {
 });
 
 router.get('/login', function (req, res, next) {
-    // authenticate the user using passport (see, /config/passport.js)
-    passport.authenticate('local', {
-        failureRedirect: '/login'
-    })
-
     // if the user is already logged in, redirect to home page
     if (req.user) {
         return res.redirect('/');
@@ -135,7 +141,7 @@ router.get('/login', function (req, res, next) {
     return res.render('base', about);
 });
 
-router.post('/login', async function (req, res, next) {
+router.post('/login', limiter, async function (req, res, next) {
     try {
         // try and authenticate the user, redirect depending on outcome
         passport.authenticate('local', {

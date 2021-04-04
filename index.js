@@ -6,6 +6,7 @@ const passport = require('passport');
 const MS = require('express-mongoose-store')(session, mongoose);
 const fileUpload = require('express-fileupload');
 const path = require('path');
+const csrf = require('csurf')
 
 require('dotenv').config()
 require('./config/passport')(passport)
