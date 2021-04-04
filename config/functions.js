@@ -45,9 +45,7 @@ const language = function (user, languageCookie) {
         userLanguage = 'English'
     }
 
-    const English = require(`../translations/English`)
-    const YourLang = require(`../translations/${userLanguage}`)
-    const langObject = merge(English, YourLang);
+    const langObject = require(`../i18n_compiled/${userLanguage}`)
 
     return langObject
 }
@@ -62,28 +60,6 @@ const changeLanguage = function (code) {
         return 'English'
     }
 }
-
-// custom object merge function
-const merge = function (...arguments) {
-    // create a new object
-    let target = {};
-
-    // merge the object into the target object
-    const merger = (obj) => {
-        for (let prop in obj) {
-            if (obj[prop] == '') {} else {
-                target[prop] = obj[prop];
-            }
-        }
-    };
-
-    // iterate through all objects and merge them with target
-    for (let i = 0; i < arguments.length; i++) {
-        merger(arguments[i]);
-    }
-
-    return target;
-};
 
 module.exports = {
     loggedin,

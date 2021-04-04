@@ -46,7 +46,7 @@ const langCodes = {
     NO: "Norwegian",
     FA: "Persian",
     PL: "Polish",
-    PT: "Portuguese",
+    PT: "Portugese",
     PA: "Punjabi",
     QU: "Quechua",
     RO: "Romanian",

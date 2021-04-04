@@ -57,6 +57,24 @@
 
 <img src="/public/img/divider.png" height="20px" width="100%">
 
+# How it Works
+
+### Translations
+This will be displayed in the steps it takes for translations to work
+* static translations are stored in the `./translations` folder
+* a user translates by editing those files
+* to add more strings to be translated, run the `translate` script
+* __**compiling languages**__
+* because some languages arent 100% translated, it took a lot of server time merging the English and other lanhguages file for each request
+* we fixed this by "compiling" the languages
+* the script `i18n_comp` compiles the languages into a folder called `./i18n_compiled`
+* now, the server only has to access one translation file instead of going into two files and dynamically merging them
+* __**how to compile languages**__
+* you should never have to manually compile a langauge because the `start` script runs the `i18n_comp` script at the beginning
+* i18n_comp folder is ignored because it is dynamic and changes
+
+<img src="/public/img/divider.png" height="20px" width="100%">
+
 # Translating
 
 Hey! We appreciate translations sooo much! We want to bring forward an internet were no one is left behind, we can help start this by providing translations on the Better Mac Store!

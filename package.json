@@ -4,9 +4,11 @@
   "description": "a better mac app store, because the current one stinks",
   "main": "index.js",
   "scripts": {
-    "test": "node .scripts/.tests/ejs.js",
-    "start": "nodemon .",
-    "translate": "node .scripts/translate.js"
+    "start": "npm run i18n_comp && nodemon .",
+    "lint": "node .scripts/.tests/linter.js",
+    "test": "node .scripts/.tests/tests.js",
+    "translate": "node .scripts/translate.js",
+    "i18n_comp": "node .scripts/compile.js"
   },
   "repository": {
     "type": "git",

@@ -2,6 +2,7 @@
 destroy/
 */.DS_Store
 .DS_Store
+i18n_compiled
 
 # Logs
 logs
