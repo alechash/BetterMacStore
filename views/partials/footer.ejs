@@ -35,6 +35,7 @@
         <span class="text-white"><%= Built_for_Developers_by_Developers %>.</span><br><br>
 
         <form action="/account/settings/language" method="POST">
+            <label for="language" class="mb-5"><%= Change_Language %>:<br></label>
             <div class="relative inline-flex">
                 <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 412 232">
@@ -43,7 +44,8 @@
                         fill="#648299" fill-rule="nonzero" />
                 </svg>
                 <select class="border border-gray-600 rounded-full text-gray-300 h-10 pl-5 pr-10 bg-black hover:border-gray-500
-                focus:outline-none appearance-none" data-placeholder="Choose a Language..." name="language" id="language">
+                focus:outline-none appearance-none" data-placeholder="Choose a Language..." name="language"
+                    id="language">
                     <option value="" selected="selected" hidden="hidden">Choose a language</option>
                     <option value="AF">Afrikaans</option>
                     <option value="SQ">Albanian</option>

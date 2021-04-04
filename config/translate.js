@@ -9,6 +9,7 @@
  * 
  * NOTE: translation files are housed in the /translations
  * folder
+ */
 
 const readline = require('readline')
 const path = require('path');
@@ -57,18 +58,15 @@ function translate() {
 
         //listing all files using forEach
         files.forEach(function (file) {
-            var oldFile = fs.readFileSync(directoryPath + file)
+            var oldFile = require(directoryPath + file)
 
-            const newStringToAdd = eval(`{
-                ${newTitle}:englishString
-            }`)
+            if (file.includes('English')) {
+                oldFile[newTitle] = englishString
+            } else {
+                oldFile[newTitle] = ""
+            }
 
-            Object.assign(oldFile, oldFile, JSON.stringify(newStringToAdd))
-
-            console.log(oldFile)
-            console.log('editing file: ', file)
-            fs.writeFileSync(directoryPath + file, JSON.stringify(oldFile))
+            fs.writeFileSync(directoryPath + file, 'const language = ' + JSON.stringify(oldFile) + '\n\n module.exports = language')
         });
     });
 }
-*/
