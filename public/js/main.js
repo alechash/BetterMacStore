@@ -31,11 +31,14 @@ searchInput.addEventListener("keypress", function (event) {
     }
 });
 
-document.onkeyup = function (event) {
-    if (event.keyCode == 191) {
-        searchInput.focus()
-    }
-};
+// CMD/CTRL + / to ficus on search input
+function KeyPress(e) {
+    const evtobj = e
+    if (evtobj.keyCode == 75 && evtobj.metaKey) searchInput.focus();
+    else if (evtobj.keyCode == 75 && evtobj.ctrlKey) searchInput.focus();
+}
+
+document.onkeyup = KeyPress;
 
 function navClick() {
     const nav = document.getElementById('nav')
