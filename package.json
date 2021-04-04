@@ -4,9 +4,9 @@
   "description": "a better mac app store, because the current one stinks",
   "main": "index.js",
   "scripts": {
-    "test": "node .tests/ejs.js",
+    "test": "node .scripts/.tests/ejs.js",
     "start": "nodemon .",
-    "translate": "node config/translate.js"
+    "translate": "node .scripts/translate.js"
   },
   "repository": {
     "type": "git",

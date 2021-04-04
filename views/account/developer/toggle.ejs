@@ -1,20 +1,19 @@
 <div class="box-header p-9 px-4 font-bold pt-6">
     <% if(enabled == true) { %>
-    <h1 class="text-2xl">Are you sure you want to disable developer access?</h1>
+    <h1 class="text-2xl"><%= Are_you_sure_you_want_to_disable_developer_access %></h1>
     <p class="text-md font-normal">Disabling Developer Access will make your profile private, this will also disable and
         privatize all apps under your account. Apps under any of your organizations will remain public. Your API keys
         will not be deleted but they will be disabled.<br>Nothing will be deleted, your apps and any settings will be
         public and enabled again after you re-enable Developer Access.</p><br>
     <% } else { %>
-    <h1 class="text-2xl">Are you sure you want to enable developer access?</h1>
+    <h1 class="text-2xl"><%= Are_you_sure_you_want_to_enable_developer_access %></h1>
     <p class="text-md font-normal">Enabling Developer Access will make your email public. You can set a developer email
         so your personal one won't be public. Doing this will also make your general account settings public. This
         includes your name, bio, and profile picture.<br>Any apps you made prior to disabling Developer Access will be
         republicized and enabled.</p><br>
     <% } %>
     <a href="/account/settings/developer/toggle/confirm"
-        class="bg-red-500 p-2 m-2 rounded-xl border-2 border-red-700 shadow-2xl text-white">Yes,
-        continue</a>
-    <a href="/account/settings"
-        class="bg-green-500 p-2 m-2 rounded-xl border-2 border-green-600 shadow-2xl text-white">No, take me back</a>
+        class="bg-red-500 p-2 m-2 rounded-xl border-2 border-red-700 shadow-2xl text-white"><%= Yes_continue %></a>
+    <a href="/account/settings" class="bg-green-500 p-2 m-2 rounded-xl border-2 border-green-600 shadow-2xl
+        text-white"><%= No_take_me_back %></a>
 </div>

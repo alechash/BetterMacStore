@@ -61,6 +61,8 @@
 
 Hey! We appreciate translations sooo much! We want to bring forward an internet were no one is left behind, we can help start this by providing translations on the Better Mac Store!
 
+If you translate anything, you can give yourself credit in the JavaScript file in a comment and/or below in the contributors section.
+
 There are two ways you can help translate:
 * by directly translating to the actual webiste (you will help contribute to this repo)
 * by helping translate an app hosted on https://bettermacstore.com (you will need to contact the developers of other apps and translate)
@@ -146,10 +148,13 @@ Config files are files with exports, like passport and functions
 
 All config files are available in the `./config` folder
 
-### Modals
-Misspelled from `modal` on day one, too late to rename the folder
+### Models
+All database model files are available in the `./models` folder
 
-All modal files are available in the `./models` folder
+### Scripts and Tests
+All scripts and tests are available in the `./.scripts` folder<br>
+Inside this folder is scripts like `translate.js` and then there are tests in the `./.scripts/.tests` folder<br>
+In the tests folder is files like EJS linting
 
 <img src="/public/img/divider.png" height="20px" width="100%">
 
