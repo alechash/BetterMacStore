@@ -44,7 +44,7 @@ const start = function () {
 }
 
 const cleanUp = function (dir) {
-    fs.rm(dir, {
+    fs.rmdir(dir, {
         recursive: true,
         force: true
     }, (err) => {
