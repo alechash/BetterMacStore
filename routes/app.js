@@ -9,6 +9,8 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport')
 const Name = process.env.NAME
 const funcs = require('../config/functions');
+const he = require('he');
+
 
 var about = {}
 router.get('/*', async function (req, res, next) {
@@ -54,7 +56,7 @@ router.post('/new', async function (req, res, next) {
     myOrgs.push('me')
 
     if (!myOrgs.includes(org)) {
-        return res.send('Error: you are not part of the ' + org + ' organization<br><br>Tip: you can just press the back button and the input fields will have your inputed data ;)')
+        return res.send('Error: you are not part of the ' + he.encode(org) + ' organization<br><br>Tip: you can just press the back button and the input fields will have your inputed data ;)')
     }
     // END: check to see if user has access to the organization the app will be made for
 

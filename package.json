@@ -31,6 +31,7 @@
     "express-fileupload": "^1.2.1",
     "express-mongoose-store": "^1.0.7",
     "express-session": "^1.17.1",
+    "he": "^1.2.0",
     "helmet": "^4.4.1",
     "json-merger": "^1.1.5",
     "mongoose": "^5.11.15",
