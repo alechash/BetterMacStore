@@ -9,7 +9,6 @@
  * 
  * NOTE: translation files are housed in the /translations
  * folder
- */
 
 const readline = require('readline')
 const path = require('path');
@@ -72,3 +71,4 @@ function translate() {
         });
     });
 }
+*/
