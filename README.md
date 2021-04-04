@@ -12,6 +12,8 @@
 <summary>Click me to view the TOC</summary>
 
 * [Features](#features)
+* [How it Works](#how-it-works)
+    * [Translations](#translations)
 * [Translating](#translating)
     * [Translating Apps](#translating-apps)
     * [Translating the Website](#translating-the-website)
