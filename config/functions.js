@@ -22,9 +22,7 @@ const staff = function (user) {
 const needLoggedin = function (user, res, next) {
     if (!user) {
         return res.redirect('/login')
-    } else {
-        return next()
-    }
+    } else {}
 }
 
 // function to return the language of the logged in user (defaults to english)
@@ -68,10 +66,24 @@ const changeLanguage = function (code) {
     }
 }
 
+// transfer category id to category name
+const categoryName = function (id) {
+    const cateCode = require('./cateCodes')
+
+    for (prop in cateCode) {
+        if ('_' + id == prop) {
+            return cateCode[prop]
+        }
+    }
+
+    return 'Unknown'
+}
+
 module.exports = {
     loggedin,
     staff,
     needLoggedin,
     language,
-    changeLanguage
+    changeLanguage,
+    categoryName
 };

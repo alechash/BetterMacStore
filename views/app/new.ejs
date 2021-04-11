@@ -41,7 +41,7 @@
 
             <label for="copy" class="text-xl"><%= Copyright_Year %> <span class="text-red-600">*</span></label><br>
             <p class="text-sm"><%= This_can_be_changed_later %>.
-                (<%- use_icurrenti_for_it_to_always_be_the_current_year %>)
+                <%- use_icurrenti_for_it_to_always_be_the_current_year %>
             </p>
             <input name="copy" id="copy" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
@@ -76,6 +76,49 @@
             </p>
             <input name="repo" id="repo" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
+
+
+
+            <label for="repo" class="text-xl"><%= Tags %></label><br>
+            <p class="text-sm"><%= Optional_changeable %> <%= Seperate_tags_by_commas %>. <%= Spaces_are_allowed %>.
+                <%= Recommended_because_tags_are_heavily_weighted_in_search %>.</p>
+            <input name="tags" id="tags" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+                hover:border-gray-400 focus:outline-none appearance-none"><br><br>
+
+
+
+            <label for="repo" class="text-xl"><%= Category %></label><br>
+            <p class="text-sm"><%= Optional_changeable %></p>
+            <select name="category" id="category" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+                hover:border-gray-400 focus:outline-none appearance-none">
+                <option value="1">Books</option>
+                <option value="2">Business</option>
+                <option value="3">Developer Tools</option>
+                <option value="4">Education</option>
+                <option value="5">Entertainment</option>
+                <option value="6">Finance</option>
+                <option value="7">Food & Drink</option>
+                <option value="8">Games</option>
+                <option value="9">Graphics & Design</option>
+                <option value="10">Health & Fitness</option>
+                <option value="11">Lifestyle</option>
+                <option value="12">Kids</option>
+                <option value="13">Magazines & Newspapers</option>
+                <option value="14">Medical</option>
+                <option value="15">Music</option>
+                <option value="16">Navigation</option>
+                <option value="17">News</option>
+                <option value="18">Photo & Video</option>
+                <option value="19">Productivity</option>
+                <option value="20">Reference</option>
+                <option value="21">Safari Extension</option>
+                <option value="22">Shopping</option>
+                <option value="23">Social Networking</option>
+                <option value="24">Sports</option>
+                <option value="25">Travel</option>
+                <option value="26">Utilities</option>
+                <option value="27">Weather</option>
+            </select><br><br>
 
 
 

@@ -17,8 +17,7 @@ const Image = new mongoose.Schema({
     app: {
         type: String,
         unique: false,
-        required: true,
-        default: false
+        required: true
     },
     creationDate: {
         type: Date,

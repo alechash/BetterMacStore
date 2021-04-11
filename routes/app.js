@@ -50,6 +50,8 @@ router.post('/new', async function (req, res, next) {
     const org = req.body.org
     const name = req.body.name
     const description = req.body.description
+    const tags = req.body.tags.split(',').map(Function.prototype.call, String.prototype.trim)
+    const category = req.body.category
     const appId = Math.floor(1000000 + Math.random() * 9000000)
 
     // BEGIN: check to see if user has access to the organization the app will be made for
@@ -80,7 +82,9 @@ router.post('/new', async function (req, res, next) {
             org: organization,
             name: name,
             description: description,
-            creationDate: Date.now()
+            creationDate: Date.now(),
+            tags: tags,
+            category: funcs.categoryName(category)
         },
         unique: {
             appId: appId
@@ -147,6 +151,8 @@ router.post('/new', async function (req, res, next) {
 
 router.get('/:id', async function (req, res, next) {
     // finds the apps homepage
+
+    return res.send('Hi')
 
     // find the actual app data
     const app = await Application.findOne({

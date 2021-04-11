@@ -34,6 +34,17 @@ const Application = new mongoose.Schema({
             required: true,
             default: false
         },
+        tags: {
+            type: Array,
+            unique: false,
+            required: false,
+            default: []
+        },
+        category: {
+            type: String,
+            unique: false,
+            required: false,
+        }
     },
     unique: {
         appId: {
