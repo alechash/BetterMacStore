@@ -9,6 +9,12 @@ const passport = require('passport')
 const Name = process.env.NAME
 const funcs = require('../config/functions');
 const validator = require('validator');
+const csrf = require('csurf')
+const rl = require('../config/rateLimit')
+
+const csrfProtection = csrf({
+    cookie: true
+})
 
 var about = {}
 router.get('/*', async function (req, res, next) {
@@ -39,7 +45,7 @@ router.get('/new', function (req, res, next) {
     return res.render('base', about);
 });
 
-router.post('/new', async function (req, res, next) {
+router.post('/new', csrfProtection, rl.min_1, async function (req, res, next) {
     // if no user, redirect to login page
     funcs.needLoggedin(req.user, res, next)
 
