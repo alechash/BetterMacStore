@@ -34,13 +34,6 @@ router.get('/', function (req, res, next) {
     return res.render('base', about);
 });
 
-router.get('/donate', function (req, res, next) {
-    about.title = 'Donate'
-    about.template = 'main/donate'
-
-    return res.render('base', about);
-});
-
 router.get('/search', async function (req, res, next) {
     const query = req.query.q
     const page = Number(req.query.p ? req.query.p : '0') + 1

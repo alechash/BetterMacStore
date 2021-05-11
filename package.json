@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bruggg/BetterMacStore.git"
+    "url": "git+https://github.com/alechash/BetterMacStore.git"
   },
-  "author": "Bruggg LLC",
+  "author": "Alec Wilson",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bruggg/BetterMacStore/issues"
+    "url": "https://github.com/aslechash/BetterMacStore/issues"
   },
-  "homepage": "https://github.com/bruggg/BetterMacStore#readme",
+  "homepage": "https://github.com/alechash/BetterMacStore#readme",
   "dependencies": {
     "autoprefixer": "^10.2.5",
     "bcryptjs": "^2.4.3",

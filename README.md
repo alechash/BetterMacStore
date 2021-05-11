@@ -110,7 +110,7 @@ You will need `Node.JS`, available [here](https://nodejs.org).
 
 ## Git Steps
 ### First, Clone the Repo
-`git clone https://github.com/bruggg/BetterMacStore`
+`git clone https://github.com/alechash/BetterMacStore`
 
 ### CD to The Dir
 `cd BetterMacStore`
@@ -150,7 +150,7 @@ Once you create an account, you can access the database using a tool like [Robo 
 <img src="/public/img/divider.png" height="20px" width="100%">
 
 # Contributors
-You can view all contributors [here](https://github.com/bruggg/BetterMacStore/graphs/contributors).
+You can view all contributors [here](https://github.com/alechash/BetterMacStore/graphs/contributors).
 
 # Contribute
 Pull requests and issues are welcome :)
