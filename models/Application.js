@@ -35,7 +35,7 @@ const Application = new mongoose.Schema({
             default: false
         },
         tags: {
-            type: Array,
+            type: [String],
             unique: false,
             required: false,
             default: []
@@ -55,4 +55,24 @@ const Application = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model('Application', Application)
+Application.index({
+    'meta.name': 'text',
+    'meta.description': 'text',
+    'meta.tags': 'text',
+    'meta.category': 'text',
+    'meta.developer': 'text',
+}, {
+    weights: {
+        'meta.name': 10,
+        'meta.description': 3,
+        'meta.tags': 2,
+        'meta.category': 1,
+        'meta.developer': 1,
+    },
+});
+
+Application.on('index', error => {
+    console.log(error.message);
+});
+
+module.exports = mongoose.model('Application', Application, 'application')

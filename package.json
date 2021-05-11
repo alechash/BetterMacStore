@@ -4,11 +4,12 @@
   "description": "a better mac app store, because the current one stinks",
   "main": "index.js",
   "scripts": {
-    "start": "npm run i18n_comp && nodemon .",
+    "start": "yarn build:css && npm run i18n_comp && nodemon .",
     "lint": "node .scripts/.tests/linter.js",
     "test": "node .scripts/.tests/tests.js",
     "translate": "node .scripts/translate.js",
-    "i18n_comp": "node .scripts/compile.js"
+    "i18n_comp": "node .scripts/compile.js",
+    "build:css": "postcss public/css/tailwind.css -o public/css/style.css"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/bruggg/BetterMacStore#readme",
   "dependencies": {
+    "autoprefixer": "^10.2.5",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
@@ -37,12 +39,15 @@
     "helmet": "^4.4.1",
     "json-merger": "^1.1.5",
     "mongoose": "^5.11.15",
+    "mongoose-text-search": "^0.0.2",
     "node-email-validation": "^1.0.4",
     "nodemon": "^2.0.7",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "postcss": "^8.2.12",
     "readline": "^1.3.0",
     "serve-static": "^1.14.1",
+    "tailwindcss": "^2.1.1",
     "url": "^0.11.0",
     "uuid": "^8.3.2",
     "validator": "^13.5.2"

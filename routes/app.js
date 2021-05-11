@@ -10,6 +10,7 @@ const passport = require('passport')
 const Name = process.env.NAME
 const funcs = require('../config/functions');
 const he = require('he');
+const wasabi = require('../config/wasabi')
 
 
 var about = {}

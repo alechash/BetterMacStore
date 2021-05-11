@@ -1,41 +1,40 @@
 <div class="box-header p-9 px-4 font-bold pt-12">
     <div class="bg-gray-100 rounded-2xl mb-6">
-        <div class="mx-2">
-            <h1 class="text-4xl p-2 m-2 pt-5"><%= Settings %></h1>
-            <label for="email" class="p-2 my-2 text-xl"><%= Email %></label><br>
-            <input name="email" placeholder="me@email.com" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+        <div class="mx-2 px-2">
+            <h1 class="text-4xl mb-2 pt-5"><%= Settings %></h1>
+            <label for="email" class="my-2 text-xl"><%= Email %></label><br>
+            <input name="email" placeholder="me@email.com" type="text" class="w-full border border-gray-300 rounded-lg text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" value="<%= user.personal.email %>">
 
             <button type="submit"
-                class="p-2 my-2 bg-blue-500 text-white rounded-xl"><%= save_account_settings %></button>
+                class="p-2 my-2 bg-blue-500 text-white rounded-lg px-12"><%= save_account_settings %></button>
         </div>
     </div>
 
-    <div class="bg-gray-100 rounded-2xl mb-6">
-        <h1 class="text-4xl p-2 m-2 pt-5 pl-4"><%= Developer %></h1>
+    <div class="bg-gray-100 rounded-2xl mb-6 px-2">
+        <h1 class="text-4xl m-2 pt-5"><%= Developer %></h1>
 
         <% if(user.developer.developerEnabled == true) { %>
 
-        <label for="create_org" class="p-2 m-2 text-xl"><%= Create_an_Organization %></label><br>
+        <label for="create_org" class="m-2 text-xl"><%= Create_an_Organization %></label><br>
         <div class="mx-2 pb-2">
             <a href="/dev/new"
                 class="p-2
-                 bg-gray-100 text-blue-500 rounded-xl border-gray-300 border-2 text-left font-bold w-full block relative">
+                 bg-gray-100 text-blue-500 rounded-xl border-gray-300 border text-left font-bold w-full block relative">
                 <%= Create_an_Organization %>
             </a>
         </div>
-        <label class="p-2 m-2 text-xl"><%= My_Organizations %></label><br>
+        <label class="m-2 text-xl"><%= My_Organizations %></label><br>
         <% for(i=0; i < user.developer.organizations.length; i++) { %>
-        <div class="bg-gray-200 p-2 m-2 rounded-xl font-bold">
+        <div class="bg-gray-200 m-2 rounded-xl font-bold">
             <a href="/dev/<%= user.developer.organizations[i] %>">
-                <button
-                    class="p-1 m-2 mr-0 bg-gray-100 text-blue-500 rounded-xl border-gray-300 border-2 text-left font-bold">
+                <button class="p-1 m-2 mr-0 text-blue-500 rounded-xl text-left font-bold">
                     @<%= user.developer.organizations[i] %>
                 </button>
             </a>
             <a href="/dev/<%= user.developer.organizations[i] %>/settings">
                 <button
-                    class="p-1 m-2 bg-gray-100 text-blue-500 rounded-xl border-gray-300 border-2 text-left font-bold float-right">
+                    class="p-1 m-2 bg-gray-100 text-blue-500 rounded-xl border-gray-300 border-2 text-left font-bold float-right px-4">
                     <%= Manage %>
                 </button>
             </a>

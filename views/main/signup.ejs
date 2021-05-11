@@ -1,11 +1,11 @@
 <div class="box-header p-9 px-4 font-bold pt-12">
     <h1 class="text-2xl p-2 m-2"><%= Signup %></h1>
     <form method="POST" action="/signup">
-        <input name="email" placeholder="<%= placeholderEmail %>"
+        <input name="email" placeholder="<%= placeholderEmail %>" type="email"
             class="focus:outline-none m-2 p-2 rounded-xl border-2 border-gray w-full" required><br>
-        <input name="password" placeholder="<%= set_password %>"
+        <input name="password" placeholder="<%= set_password %>" type="password"
             class="focus:outline-none m-2 p-2 rounded-xl border-2 border-gray w-full" required><br>
-        <input name="password2" placeholder="<%= confirm_password %>"
+        <input name="password2" placeholder="<%= confirm_password %>" type="password"
             class="focus:outline-none m-2 p-2 rounded-xl border-2 border-gray w-full" required><br>
         <input name="authentication" value="later on, i will implment a form authentication thingy" hidden=""
             class="focus:outline-none m-2 p-2 rounded-xl border-2 border-gray w-full" required>

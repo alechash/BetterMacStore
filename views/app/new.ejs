@@ -20,8 +20,8 @@
                     <path
                         d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z"
                         fill="#648299" fill-rule="nonzero" /></svg>
-                <select id="org" name="org"
-                    class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none">
+                <select id="org" name="org" class="w-full border border-gray-300 rounded-lg text-gray-600 h-10 pl-5 pr-5 bg-white
+                     hover:border-gray-400 focus:outline-none appearance-none">
                     <option value="me"><%= Personal_Account %></option>
                     <% for(i=0; i < user.developer.organizations.length; i++) { %>
                     <option value="<%= user.developer.organizations[i] %>">@<%= user.developer.organizations[i] %>
@@ -34,7 +34,7 @@
 
             <label for="name" class="text-xl"><%= App_Name %> <span class="text-red-600">*</span></label><br>
             <p class="text-sm"><%= This_can_be_changed_later %>.</p>
-            <input name="name" id="name" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <input name="name" id="name" type="text" class="w-full border border-gray-300 rounded-lg text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
 
@@ -43,14 +43,14 @@
             <p class="text-sm"><%= This_can_be_changed_later %>.
                 <%- use_icurrenti_for_it_to_always_be_the_current_year %>
             </p>
-            <input name="copy" id="copy" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <input name="copy" id="copy" type="text" class="w-full border border-gray-300 rounded-lg text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
 
 
             <label for="website" class="text-xl"><%= Website %></label><br>
             <p class="text-sm"><%= Optional_changeable %></p>
-            <input name="website" id="website" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <input name="website" id="website" type="url" class="w-full border border-gray-300 rounded-lg text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
 
@@ -58,14 +58,14 @@
             <label for="description" class="text-xl"><%= Description %> <span class="text-red-600">*</span></label><br>
             <p class="text-sm"><%= Required_changeable %>
             </p>
-            <textarea name="description" id="description" type="text" class="w-full border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-5 bg-white
+            <textarea name="description" id="description" type="text" class="w-full border border-gray-300 rounded-lg text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required></textarea><br><br>
 
 
 
             <label for="license" class="text-xl"><%= License %></label><br>
             <p class="text-sm"><%= Optional_changeable %> <%= This_is_mostly_used_for_open_source_projects %></p>
-            <input name="license" id="license" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <input name="license" id="license" type="text" class="w-full border border-gray-300 rounded-lg text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
 
@@ -74,7 +74,7 @@
             <p class="text-sm"><%= Optional_changeable %>
                 <%= This_is_normally_a_GitHub_link_or_another_git_scm_instance %>
             </p>
-            <input name="repo" id="repo" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <input name="repo" id="repo" type="url" class="w-full border border-gray-300 rounded-lg text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
 
@@ -82,14 +82,14 @@
             <label for="repo" class="text-xl"><%= Tags %></label><br>
             <p class="text-sm"><%= Optional_changeable %> <%= Seperate_tags_by_commas %>. <%= Spaces_are_allowed %>.
                 <%= Recommended_because_tags_are_heavily_weighted_in_search %>.</p>
-            <input name="tags" id="tags" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <input name="tags" id="tags" type="text" class="w-full border border-gray-300 rounded-lg text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
 
 
             <label for="repo" class="text-xl"><%= Category %></label><br>
             <p class="text-sm"><%= Optional_changeable %></p>
-            <select name="category" id="category" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <select name="category" id="category" class="w-full border border-gray-300 rounded-lg text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none">
                 <option value="1">Books</option>
                 <option value="2">Business</option>
@@ -128,21 +128,21 @@
 
             <label for="privacy" class="text-xl"><%= Privacy_Policy %> <span class="text-red-600">*</span></label><br>
             <p class="text-sm"><%= Required_changeable %></p>
-            <input name="privacy" id="privacy" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <input name="privacy" id="privacy" type="url" class="w-full border border-gray-300 rounded-lg text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
 
 
             <label for="terms" class="text-xl"><%= Terms_of_Service %></label><br>
             <p class="text-sm"><%= Optional_changeable %></p>
-            <input name="terms" id="terms" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <input name="terms" id="terms" type="url" class="w-full border border-gray-300 rounded-lg text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
 
 
             <label for="gdpr" class="text-xl"><%= GDPR_Policies %></label><br>
             <p class="text-sm"><%= Optional_changeable %></p>
-            <input name="gdpr" id="gdpr" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <input name="gdpr" id="gdpr" type="url" class="w-full border border-gray-300 rounded-lg text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
 
@@ -153,7 +153,7 @@
 
             <label for="apple" class="text-xl"><%= Apple_App_Store_URL %></label><br>
             <p class="text-sm"><%= This_will_be_public %>. <%= This_can_be_changed_later %>.</p>
-            <input name="apple" id="apple" type="url" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <input name="apple" id="apple" type="url" class="w-full border border-gray-300 rounded-lg text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
 
@@ -166,7 +166,7 @@
             <p class="text-sm"><%= Required_changeable %> <%= This_can_be_a_png_jpeg_or_gif %>
                 <%= Gifs_will_play_on_hover %>
                 <%= _512px_by_512px_recommended %></p>
-            <input name="icon" id="icon" type="file" accept="image/gif, image/jpeg, image/png" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <input name="icon" id="icon" type="file" accept="image/gif, image/jpeg, image/png" class="w-full border border-gray-300 rounded-lg text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
 
@@ -174,7 +174,7 @@
             <label for="screenshots" class="text-xl"><%= Screenshots %> <span class="text-red-600">*</span></label><br>
             <p class="text-sm"><%= Required_changeable %> <%= This_can_be_a_png_jpeg_or_gif %>
                 <%= Gifs_will_constantly_play %> <%= Full_initial_size_recommended %></p>
-            <input name="screenshots" id="screenshots" type="file" accept="image/gif, image/jpeg, image/png" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <input name="screenshots" id="screenshots" type="file" accept="image/gif, image/jpeg, image/png" class="w-full border border-gray-300 rounded-lg text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required multiple><br><br>
 
 
@@ -189,14 +189,14 @@
 
             <label for="app" class="text-xl"><%= app_File %> <span class="text-red-600">*</span></label><br>
             <p class="text-sm"><%= Required_changeable %></p>
-            <input name="app" id="app" type="file" accept=".app" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <input name="app" id="app" type="file" accept=".app" class="w-full border border-gray-300 rounded-lg text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
 
 
             <label for="zip" class="text-xl"><%= zip_File %> <span class="text-red-600">*</span></label><br>
             <p class="text-sm"><%= Required_changeable %></p>
-            <input name="zip" id="zip" type="file" accept=".zip" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <input name="zip" id="zip" type="file" accept=".zip" class="w-full border border-gray-300 rounded-lg text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
 
@@ -204,7 +204,7 @@
             <label for="dmg" class="text-xl"><%= dmg_File %></label><br>
             <p class="text-sm"><%= Optional_changeable %> <%= This_will_be_the_default_download_option_if_provided %>
             </p>
-            <input name="dmg" id="dmg" type="file" accept=".dmg" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <input name="dmg" id="dmg" type="file" accept=".dmg" class="w-full border border-gray-300 rounded-lg text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none"><br><br>
 
 
@@ -219,7 +219,7 @@
             <p class="text-sm"><%= Required_not_changeable %> (<%= you_will_be_able_to_make_more_releases %>,
                 <%= formatting_options %>
                 [0-9\.]*)</p>
-            <input name="version" id="version" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <input name="version" id="version" type="text" class="w-full border border-gray-300 rounded-lg text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required pattern="^[0-9\.]*$"><br><br>
 
 
@@ -227,14 +227,14 @@
             <label for="title" class="text-xl"><%= Release_Title %></label><br>
             <p class="text-sm"><%= Optional_not_changeable %> (<%= you_will_be_able_to_make_more_releases %>;
                 <%= if_not_specified_the_title_will_be %> "v{{release_version}}")</p>
-            <input name="title" id="title" type="text" class="w-full border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-5 bg-white
+            <input name="title" id="title" type="text" class="w-full border border-gray-300 rounded-lg text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required><br><br>
 
 
 
             <label for="notes" class="text-xl"><%= Release_Notes %> <span class="text-red-600">*</span></label><br>
             <p class="text-sm"><%= Required_not_changeable %> (<%= you_will_be_able_to_make_more_releases %>)</p>
-            <textarea name="notes" id="notes" type="text" class="w-full border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-5 bg-white
+            <textarea name="notes" id="notes" type="text" class="w-full border border-gray-300 rounded-lg text-gray-600 h-10 pl-5 pr-5 bg-white
                 hover:border-gray-400 focus:outline-none appearance-none" required></textarea><br><br>
 
 

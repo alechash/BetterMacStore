@@ -44,21 +44,26 @@ router.get('/donate', function (req, res, next) {
 router.get('/search', async function (req, res, next) {
     const query = req.query.q
     const page = Number(req.query.p ? req.query.p : '0') + 1
-    const skip = page * 20
+    const skip = (page - 1) * 100
 
     const search = await Application.find({
             $text: {
-                $search: query
+                $search: query,
+                $caseSensitive: false
+            }
+        }, {
+            score: {
+                $meta: "textScore"
             }
         })
         .skip(skip)
         .limit(20)
 
-    console.log(search)
-
     about.title = 'Search - ' + query
     about.template = 'main/search'
     about.apps = search
+    about.search = query
+    about.page = page
 
     return res.render('base', about);
 });

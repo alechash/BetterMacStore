@@ -20,28 +20,28 @@
             -->
 
             <% if(company.other.twitter) { %>
-            <span class="pl-0 px-4 pr-0 text-gray-200">@</span>
+            <span class="text-gray-200">@</span>
             <a href="http://twitter.com/<%= company.other.twitter %>" class="hover:underline">
-                <span class="text-gray-500"><%= company.other.twitter %></span>
+                <span class="text-gray-500 pr-4"><%= company.other.twitter %></span>
             </a>
             <% } %>
 
             <% if(company.other.website) { %>
-            <span class="px-4 pr-0 text-gray-200 text-xs">🔗</span>
+            <span class="text-gray-200 text-xs">🔗</span>
             <a href="<%= company.other.website %>" class="hover:underline">
-                <span
-                    class="text-gray-500"><%= company.other.website.replace('https://', '').replace('http://', '') %></span>
+                <span class="text-gray-500
+                    pr-4"><%= company.other.website.replace('https://', '').replace('http://', '') %></span>
             </a>
             <% } %>
 
             <% if(company.other.location) { %>
-            <span class="px-4 pr-0 text-gray-200 text-xs">🌍</span>
-            <span class="text-gray-500"><%= company.other.location %></span>
+            <span class="text-gray-200 text-xs">🌍</span>
+            <span class="text-gray-500 pr-4"><%= company.other.location %></span>
             <% } %>
 
-            <span class="px-4 pr-0 text-gray-200 text-xs">📧</span>
+            <span class="text-gray-200 text-xs">📧</span>
             <a href="mailto:<%= company.general.email %>" class="hover:underline">
-                <span class="text-gray-500"><%= company.general.email %></span>
+                <span class="text-gray-500 pr-4"><%= company.general.email %></span>
             </a>
         </p>
     </div>

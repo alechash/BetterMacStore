@@ -22,6 +22,8 @@ router.get('/*', async function (req, res, next) {
     about.footer = true
     about.analytics = process.env.ANALYTICS
     about.ga = process.env.GA_CODE
+
+    next()
 });
 
 router.get('/', function (req, res, next) {
