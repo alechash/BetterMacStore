@@ -12,7 +12,7 @@ const {
 const url = require('url');
 const emailValid = require('node-email-validation');
 const csrf = require('csurf')
-const rl = require('../config/rate_limit')
+const rl = require('../config/rateLimit')
 
 const csrfProtection = csrf({
     cookie: true
