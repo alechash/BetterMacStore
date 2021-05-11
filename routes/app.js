@@ -37,7 +37,7 @@ router.get('/*', async function (req, res, next) {
     next()
 });
 
-router.get('/new', csrfProtection, rl.min_1, async function (req, res, next) {
+router.get('/new', async function (req, res, next) {
     // if no user, redirect to login page
     funcs.needLoggedin(req.user, res, next)
 
@@ -47,7 +47,7 @@ router.get('/new', csrfProtection, rl.min_1, async function (req, res, next) {
     return res.render('base', about);
 })
 
-router.post('/new', async function (req, res, next) {
+router.post('/new', csrfProtection, rl.min_1, async function (req, res, next) {
     // if no user, redirect to login page
     funcs.needLoggedin(req.user, res, next)
 
