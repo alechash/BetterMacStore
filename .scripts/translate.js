@@ -60,6 +60,8 @@ function translate() {
         files.forEach(function (file) {
             var oldFile = require(directoryPath + file)
 
+            console.log('editing ' + oldfile)
+
             if (file.includes('English')) {
                 oldFile[newTitle] = englishString
             } else {
@@ -67,6 +69,8 @@ function translate() {
             }
 
             fs.writeFileSync(directoryPath + file, 'const language = ' + JSON.stringify(oldFile) + '\n\n module.exports = language')
+
+            console.log('\n      ...success\n\n')
         });
     });
 }

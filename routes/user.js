@@ -11,12 +11,12 @@ const {
 } = require('uuid');
 const url = require('url');
 const emailValid = require('node-email-validation');
-const RateLimit = require('express-rate-limit');
+const csrf = require('csurf')
+const rl = require('../config/rate_limit')
 
-const limiter = new RateLimit({
-    windowMs: 1 * 60 * 1000, // 1 minute
-    max: 5
-});
+const csrfProtection = csrf({
+    cookie: true
+})
 
 var about = {}
 router.get('/*', async function (req, res, next) {
@@ -37,17 +37,18 @@ router.get('/*', async function (req, res, next) {
     next()
 });
 
-router.get('/signup', function (req, res, next) {
+router.get('/signup', csrfProtection, function (req, res, next) {
     var error = req.query.error
 
     about.title = 'Signup'
     about.template = 'main/signup'
     about.error = error
+    about.csrf = req.csrfToken()
 
     return res.render('base', about);
 });
 
-router.post('/signup', limiter, (req, res) => {
+router.post('/signup', csrfProtection, rl.min_1, (req, res) => {
     // recieve user inputed data from signup field
     const {
         email,
@@ -122,7 +123,7 @@ router.post('/signup', limiter, (req, res) => {
     })
 });
 
-router.get('/login', function (req, res, next) {
+router.get('/login', csrfProtection, function (req, res, next) {
     // if the user is already logged in, redirect to home page
     if (req.user) {
         return res.redirect('/');
@@ -137,11 +138,12 @@ router.get('/login', function (req, res, next) {
     about.title = 'Login'
     about.template = 'main/login'
     about.error = errormessage
+    about.csrf = req.csrfToken()
 
     return res.render('base', about);
 });
 
-router.post('/login', limiter, async function (req, res, next) {
+router.post('/login', csrfProtection, rl.min_1, async function (req, res, next) {
     try {
         // try and authenticate the user, redirect depending on outcome
         passport.authenticate('local', {
