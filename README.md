@@ -18,6 +18,7 @@
     * [Translating Apps](#translating-apps)
     * [Translating the Website](#translating-the-website)
 * [Running Locally](#running-locally)
+    * [Wasabi Setup](#wasabi-setup)
     * [Prerequisites](#prerequisites)
     * [Git Steps](#git-steps)
         * [First, Clone the Repo](#first-clone-the-repo)
@@ -103,6 +104,30 @@ If there is a language you don't see in that folder, just open an issue and we'l
 
 # Running Locally
 These instructions will be for macOS/Linux systems. Other instructions might be available in the wiki. If they aren't feel free to contribute to the wiki.
+
+## Wasabi Setup
+- create a wasabi account @ https://wasabi.com
+- set up billing for public access to files
+- create access keys and fill them in in the `.env`
+- create a unique bucket name, I suggest also adding some random characters at the end so as not to mess with other buckets with similar names
+- go into your bucket settings and press "POLICIES"
+- paste this into the input, and change `YOUR_BUCKET` with your bucket name: 
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowPublicRead",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::YOUR_BUCKET/*"
+    }
+  ]
+}
+```
 
 ## Prerequisites
 You will need `MongoDB`, available [here](https://mongodb.com) (you can install through Brew and Apt-Get). <br>
