@@ -37,7 +37,7 @@
     "express-rate-limit": "^5.2.6",
     "express-session": "^1.17.1",
     "fast-crc32c": "^2.0.0",
-    "fs": "*",
+    "fs": "^0.0.1-security",
     "he": "^1.2.0",
     "helmet": "^4.4.1",
     "json-merger": "^1.1.5",
