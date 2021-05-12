@@ -27,7 +27,7 @@ app.use(session({
 
 app.use(fileUpload({
     useTempFiles: true,
-    debug: false,
+    debug: true,
     limits: {
         fileSize: 500 * 1024 * 1024
     },

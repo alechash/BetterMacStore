@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="/public/img/logo/transparent.svg" width="200px">
+    <img src="/public/img/logo/blue.svg" width="200px">
 
 <h1 align="center">BetterMacStore</h1>
 </p>
@@ -39,10 +39,9 @@
     * [Modals](#modals)
 * [Donate](#donate)
     * [Bitcoin](#bitcoin)
+    * [Dogecoin](#dogecoin)
     * [Ethereum](#ethereum)
-    * [Nano](#nano-preferred)
     * [Litecoin](#litecoin)
-    * [Basic Attention Token](#basic-attention-token)
 * [License](#license)
 </details>
 
@@ -212,17 +211,14 @@ If you can't donate, I appreciate you even taking a look at the project (it real
 ### Bitcoin
 `bc1qjfe239yrr0qprg8tz8gtzsvxujk0pp465y4u4y`
 
+### Dogecoin
+much wow: `DQ5xZ9Wg5UpyamsciRkggoHc4bVUzUuW9s`
+
 ### Ethereum
 `0x439FC978639D9b0d1b11b869b92889cD004E0fA2`
 
-### Nano (preferred)
-`nano_1dh9tyge6daq394ha95owyjas454uuzfcnagr7jjn44sr4853srmzzssr49m`
-
 ### Litecoin
 `ltc1qglc620uem04l6xjkjr3ncften3dleqhd757e08`
-
-### Basic Attention Token
-`0x439FC978639D9b0d1b11b869b92889cD004E0fA2`
 
 <img src="/public/img/divider.png" height="20px" width="100%">
 

@@ -6,9 +6,9 @@
         <div class="ml-2 inline-block">
             <h1 class="text-2xl font-sans subpixel-antialiased diagonal-fractions tracking-wider py-3 pb-0">
                 <%= app.meta.name %>
-                <a href="/app/<%= app.unique.appId %>/download/latest/<%= app.meta.name %>.app.zip"
+                <a href="/app/<%= app.unique.appId %>/download/latest/zip/<%= app.meta.name %>.app.zip"
                     class="absolute right-16 text-sm mt-5 bg-blue-600 rounded-2xl p-1 px-3 pt-1.5 uppercase font-bold cursor-pointer shadow-2xl text-white"
-                    download><%= Download %></a>
+                    download="<%= app.meta.name %>.app.zip"><%= Download %></a>
             </h1>
             <p class="text-gray-500 pt-0">
                 <span class="pr-1 pr-0 text-gray-300 text-xs"><%= by %></span>
@@ -41,9 +41,9 @@
             <% for(i=0; i < releases.length; i ++) { %>
             <div class="p-6 bg-gray-100 rounded-2xl relative">
                 <h2 class="text-md"><%= releases[i].title %>
-                    <a href="/app/<%= app.unique.appId %>/download/<%= releases[i]._id %>/<%= app.meta.name %>.app.zip"
+                    <a href="/app/<%= app.unique.appId %>/download/<%= releases[i]._id %>/zip/<%= app.meta.name %>.app.zip"
                         class="absolute right-4 mt-0 bg-blue-600 rounded-2xl p-1 px-3 pt-1.5 text-sm uppercase font-bold cursor-pointer shadow-2xl text-white"
-                        download><%= download_this_version %></a>
+                        download="<%= app.meta.name %>.app.zip"><%= download_this_version %></a>
                     <button onclick="moreDownloads()"
                         class="absolute right-4 top-12 mt-0 rounded-2xl p-1 px-3 pt-1.5 text-sm cursor-pointer shadow-2xl text-blue-600"><%= more_downloads %></button>
                 </h2>
@@ -72,16 +72,16 @@
             <% for(i=0; i < releases.length; i ++) { %>
             <div class="p-3 bg-gray-200 rounded-2xl relative font-bold mx-2 my-2">
                 <h2 class="text-md"><%= releases[i].title %>
-                    <a href="/app/<%= app.unique.appId %>/download/<%= releases[i]._id %>/<%= app.meta.name %>.app"
-                        class="absolute right-4 mt-0 pt-1.5 text-sm font-normal cursor-pointer shadow-2xl text-blue-600"
-                        download><%= download_app_version %></a>
-                    <a href="/app/<%= app.unique.appId %>/download/<%= releases[i]._id %>/<%= app.meta.name %>.app.zip"
+                    <a href="/app/<%= app.unique.appId %>/download/<%= releases[i]._id %>/app/<%= app.meta.name %>.app"
+                        download="<%= app.meta.name %>.app"
+                        class="absolute right-4 mt-0 pt-1.5 text-sm font-normal cursor-pointer shadow-2xl text-blue-600"><%= download_app_version %></a>
+                    <a href="/app/<%= app.unique.appId %>/download/<%= releases[i]._id %>/zip/<%= app.meta.name %>.app.zip"
                         class="absolute right-4 mt-5 pt-1.5 text-sm font-normal cursor-pointer shadow-2xl text-blue-600"
-                        download><%= download_zip_version %></a>
+                        download="<%= app.meta.name %>.app.zip"><%= download_zip_version %></a>
                     <% if(releases[i].binaries.dmg) { %>
-                    <a href="/app/<%= app.unique.appId %>/download/<%= releases[i]._id %>/<%= app.meta.name %>.dmg"
+                    <a href="/app/<%= app.unique.appId %>/download/<%= releases[i]._id %>/dmg/<%= app.meta.name %>.dmg"
                         class="absolute right-4 mt-10 pt-1.5 text-sm font-normal cursor-pointer shadow-2xl text-blue-600"
-                        download><%= download_dmg_version %></a>
+                        download="<%= app.meta.name %>.dmg"><%= download_dmg_version %></a>
                     <% } %>
                 </h2>
                 <p class="font-normal text-xs text-gray-600"><%= Version %> <%= releases[i].version %></p>

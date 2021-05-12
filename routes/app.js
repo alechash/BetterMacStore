@@ -69,14 +69,23 @@ router.post('/new', csrfProtection, rl.min_1, async function (req, res, next) {
     const wasabiAppFile = req.files.app.tempFilePath.split('/')
     const wasabiZipFile = req.files.zip.tempFilePath.split('/')
 
-    uploadFiles()
+    uploadZip()
 
-    function uploadFiles() {
+    function uploadZip() {
         if (fs.existsSync(req.files.zip.tempFilePath)) {
-            wasabi.uploadFile(req.files.app.tempFilePath)
             wasabi.uploadFile(req.files.zip.tempFilePath)
         } else {
-            uploadFiles()
+            uploadZip()
+        }
+    }
+
+    uploadApp()
+
+    function uploadApp() {
+        if (fs.existsSync(req.files.app.tempFilePath)) {
+            wasabi.uploadFile(req.files.app.tempFilePath)
+        } else {
+            uploadApp()
         }
     }
 
@@ -237,6 +246,61 @@ router.get('/:id', async function (req, res, next) {
     about.template = 'app/app'
 
     return res.render('base', about);
+});
+
+router.get('/:id/download/:version/:type/:file', async function (req, res, next) {
+    const version = req.params.version
+    const appId = req.params.id
+    const fileName = req.params.file
+    const fileType = req.params.type
+
+    var availableTypes = ['app', 'zip', 'dmg']
+
+    // check if the type exists
+    if (!availableTypes.includes(fileType)) {
+        return res.redirect('/app/' + appId)
+    }
+
+    // find the app
+    const app = await Application.findOne({
+        'unique.appId': appId
+    })
+
+    // fallback
+    var release = 'sorry, release not found'
+
+    // find latest release
+    if (version == 'latest') {
+        release = await Release.find({
+            '_id': app.meta.latestRelease,
+            'app': appId
+        }).sort({
+            _id: -1
+        })
+
+        release = release[0]
+    } else {
+        release = await Release.find({
+            '_id': version,
+            'app': appId
+        }).sort({
+            _id: -1
+        })
+
+        release = release[0]
+    }
+
+    var downloadUrl = ''
+
+    if (fileType == 'app') {
+        downloadUrl = release.binaries.app
+    } else if (fileType == 'zip') {
+        downloadUrl = release.binaries.zip
+    } else if (fileType == 'dmg') {
+        downloadUrl = release.binaries.dmg
+    }
+
+    return res.redirect(downloadUrl)
 });
 
 module.exports = router;
