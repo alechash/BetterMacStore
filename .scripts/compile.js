@@ -4,6 +4,8 @@ const path = require('path')
 const fs = require('fs')
 const dirPath = path.join(__dirname, '..', 'i18n_compiled');
 
+console.log('[LANGUAGE TRANSLATIONS]\n')
+
 const merge = function (...arguments) {
     // create a new object
     let target = {};
@@ -29,7 +31,7 @@ const makeFile = function (filePath, contents, name) {
     fs.writeFile(filePath, contents, (err) => {
         if (err) throw err;
 
-        console.log(`LANG COMPILING: ${name} was created with compile language`);
+        console.log(`[COMPILED] ${name} was compiles\n`);
     });
 }
 
@@ -52,7 +54,7 @@ const cleanUp = function (dir) {
             throw err;
         }
 
-        console.log(`LANG COMPILING: ${dir} is deleted`);
+        console.log(`[DELETED] ${dir} was deleted\n`);
 
         fs.mkdir(dir, {
             recursive: true
@@ -61,7 +63,7 @@ const cleanUp = function (dir) {
                 throw err;
             }
 
-            console.log(`LANG COMPILING: ${dir} is made`);
+            console.log(`[CREATED] ${dir} was made\n`);
 
             start()
         })
