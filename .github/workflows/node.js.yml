@@ -27,4 +27,4 @@ jobs:
             - run: npm ci
             - run: npm test
             - run: npm run lint
-            - run: npm run i18n_comp
+            - run: npm run i18n:comp
