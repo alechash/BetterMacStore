@@ -13,6 +13,11 @@ const Application = new mongoose.Schema({
             unique: false,
             required: true,
         },
+        orgId: {
+            type: String,
+            unique: false,
+            required: true,
+        },
         name: {
             type: String,
             unique: false,

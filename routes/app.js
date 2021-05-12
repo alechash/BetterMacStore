@@ -59,7 +59,7 @@ router.post('/new', csrfProtection, rl.min_1, async function (req, res, next) {
 
     // get data from the request body
     const myOrgs = req.user.developer.organizations
-    const org = req.body.org
+    var org = req.body.org
     const name = req.body.name
     const description = req.body.description
     const tags = req.body.tags.split(',').map(Function.prototype.call, String.prototype.trim)
@@ -86,26 +86,23 @@ router.post('/new', csrfProtection, rl.min_1, async function (req, res, next) {
     if (!myOrgs.includes(org)) {
         return res.send('Error: you are not part of the ' + he.encode(org) + ' organization<br><br>Tip: you can just press the back button and the input fields will have your inputed data ;)')
     }
-    // END: check to see if user has access to the organization the app will be made for
 
-    // BEGIN: see if the app is made for an organization or personal account
     organization = true
+    var organizationId = org
 
-    if (!req.user.developer.organizations.includes(req.body.org) || !req.body.org == 'me') {
-        return res.redirect('/app/new')
-    }
-
-    if (req.body.org == 'me') {
-        req.body.org = req.user._id
+    if (org == 'me') {
+        org = 'View Developer'
         organization = false
+        organizationId = req.user._id
     }
-    // END: see if the app is made for an organization or personal account
+    // END: check to see if user has access to the organization the app will be made for
 
     // create a new application template
     const newApp = new Application({
         meta: {
             developer: org,
             org: organization,
+            orgId: organizationId,
             name: name,
             description: description,
             creationDate: Date.now(),
