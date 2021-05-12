@@ -35,7 +35,7 @@ router.get('/*', async function (req, res, next) {
     next()
 });
 
-router.get('/new', function (req, res, next) {
+router.get('/new', csrfProtection, function(req, res, next) {
     // if no user, redirect to login page
     funcs.needLoggedin(req.user, res, next)
 
