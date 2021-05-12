@@ -2,8 +2,7 @@
 <link rel="stylesheet" href="/css/marked.css">
 <main class="mx-2 m-4 mx-6">
     <div class="box-header p-9 px-4 font-bold pt-12">
-        <img src="https://avatar.oxro.io/avatar.svg?name=<%= app.meta.name %>&bold=true&random=<%= Math.random() %>"
-            class="inline w-12 rounded-2xl border-black float-left mt-4 pt-0.5">
+        <img src="<%= icon.url %>" class="inline w-12 rounded-2xl border-black float-left mt-4 pt-0.5">
         <div class="ml-2 inline-block">
             <h1 class="text-2xl font-sans subpixel-antialiased diagonal-fractions tracking-wider py-3 pb-0">
                 <%= app.meta.name %>
@@ -34,11 +33,11 @@
                     <% } %>
                 </div>
             </div>
-            <h2 class="text-2xl mt-3"><%= Description %></h2>
+            <h2 class="text-2xl mt-6"><%= Description %></h2>
             <p class="mt-2 font-normal max-h-60 overflow-y-scroll p-6 bg-gray-100 rounded-lg" id="desc">
                 <%= app.meta.description %>
             </p>
-            <h2 class="text-2xl mb-2 mt-3" id="releases"><%= Releases %></h2>
+            <h2 class="text-2xl mb-2 mt-6" id="releases"><%= Releases %></h2>
             <% for(i=0; i < releases.length; i ++) { %>
             <div class="p-6 bg-gray-100 rounded-2xl relative">
                 <h2 class="text-md"><%= releases[i].title %>
@@ -52,6 +51,7 @@
                 <p class="font-normal text-sm"><%= releases[i].description %></p>
             </div>
             <% } %>
+            <h2 class="text-2xl mb-2 mt-6 capitalize" id="releases"><%= more_information %></h2>
         </div>
     </div>
 </main>
@@ -102,14 +102,3 @@
     desc = desc.replace(/(?:\r\n|\r|\n)/g, '<br>');
     document.getElementById('desc').innerHTML = desc + '<br>'
 </script>
-
-<%= app %>
-<br>
-<br>
-<%= releases[0] %>
-<br>
-<br>
-<%= screenshots %>
-<br>
-<br>
-<%= icon %>

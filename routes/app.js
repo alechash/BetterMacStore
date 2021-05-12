@@ -154,12 +154,23 @@ router.post('/new', csrfProtection, rl.min_1, async function (req, res, next) {
         newRelease.binaries.dmg = `https://s3.wasabisys.com/${process.env.WASABI_BUCKET_NAME}/${wasabiDmgFile[wasabiDmgFile.length -1]}`
     }
 
+    uploadIcon()
+    var iconName = req.files.icon.tempFilePath.split('/')
+
+    function uploadIcon() {
+        if (fs.existsSync(req.files.icon.tempFilePath)) {
+            wasabi.uploadFile(req.files.icon.tempFilePath)
+        } else {
+            uploadIcon()
+        }
+    }
+
     // create new app icon template
     const newIcon = new Image({
         app: appId,
         type: 'icon',
         creationDate: Date.now(),
-        url: req.files.icon.tempFilePath
+        url: `https://s3.wasabisys.com/${process.env.WASABI_BUCKET_NAME}/${iconName[iconName.length -1]}`
     })
 
     // save the icon
