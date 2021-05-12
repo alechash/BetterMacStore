@@ -138,7 +138,16 @@ router.post('/new', csrfProtection, rl.min_1, async function (req, res, next) {
 
     // check if a dmg was uploaded
     if (req.files.dmg) {
-        wasabi.uploadFile(req.files.dmg.tempFilePath)
+        uploadDmg()
+
+        function uploadDmg() {
+            if (fs.existsSync(req.files.dmg.tempFilePath)) {
+                wasabi.uploadFile(req.files.dmg.tempFilePath)
+            } else {
+                uploadDmg()
+            }
+        }
+
         const wasabiDmgFile = req.files.dmg.tempFilePath.split('/')
 
         // if so, add it to the template
@@ -158,11 +167,22 @@ router.post('/new', csrfProtection, rl.min_1, async function (req, res, next) {
 
     // for each screenshot uploaded, create a new object in the database
     for (i = 0; i < req.files.screenshots.length; i++) {
+        var screenName = req.files.screenshots[i].tempFilePath.split('/')
+        uploadScreens()
+
+        function uploadScreens() {
+            if (fs.existsSync(req.files.screenshots[i].tempFilePath)) {
+                wasabi.uploadFile(req.files.screenshots[i].tempFilePath)
+            } else {
+                uploadScreens()
+            }
+        }
+
         const newImage = new Image({
             app: appId,
             type: 'screenshot',
             creationDate: Date.now(),
-            url: req.files.screenshots[i].tempFilePath
+            url: `https://s3.wasabisys.com/${process.env.WASABI_BUCKET_NAME}/${screenName[screenName.length -1]}`
         })
 
         newImage.save()

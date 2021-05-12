@@ -3,4 +3,16 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.no-scroll-bars::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scroll-bars {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
 #search:invalid {}

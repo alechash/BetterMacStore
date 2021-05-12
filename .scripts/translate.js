@@ -60,7 +60,7 @@ function translate() {
         files.forEach(function (file) {
             var oldFile = require(directoryPath + file)
 
-            console.log('editing ' + oldfile)
+            console.log('editing file')
 
             if (file.includes('English')) {
                 oldFile[newTitle] = englishString
