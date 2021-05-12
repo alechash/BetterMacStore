@@ -43,6 +43,7 @@ router.get('/new', csrfProtection, async function (req, res, next) {
 
     about.title = 'Release an App'
     about.template = 'app/new'
+    about.csrf = req.csrfToken()
 
     return res.render('base', about);
 })
