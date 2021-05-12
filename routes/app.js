@@ -60,6 +60,9 @@ router.post('/new', csrfProtection, rl.min_1, async function (req, res, next) {
     const category = req.body.category
     const appId = Math.floor(1000000 + Math.random() * 9000000)
 
+    const wasabiAppFile = wasabi.uploadFile(req.files.app.tempFilePath)
+    const wasabiZipFile = wasabi.uploadFile(req.files.zip.tempFilePath)
+
     // BEGIN: check to see if user has access to the organization the app will be made for
     myOrgs.push('me')
 
@@ -111,15 +114,17 @@ router.post('/new', csrfProtection, rl.min_1, async function (req, res, next) {
         title: releaseTitle,
         creationDate: Date.now(),
         binaries: {
-            app: req.files.app.tempFilePath,
-            zip: req.files.zip.tempFilePath
+            app: wasabiAppFile,
+            zip: wasabiZipFile
         },
     })
 
     // check if a dmg was uploaded
     if (req.files.dmg) {
+        const wasabiDmgFile = wasabi.uploadFile(req.files.dmg.tempFilePath)
+
         // if so, add it to the template
-        newRelease.binaries.dmg = req.files.dmg.tempFilePath
+        newRelease.binaries.dmg = wasabiDmgFile
     }
 
     // create new app icon template

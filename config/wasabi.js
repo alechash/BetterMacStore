@@ -6,25 +6,25 @@
 
 require('dotenv').config()
 
-/** const SolidBucket = require('solid-bucket') */
+const SolidBucket = require('./SolidBucket/index')
 const apiKey = process.env.WASABI_API_KEY
 const secretKey = process.env.WASABI_SECRET_KEY
 const bucketName = process.env.WASABI_BUCKET_NAME
 
-/**
- * const provider = new SolidBucket('wasabi', {
- *     accessKeyId: apiKey,
- *     secretAccessKey: secretKey,
- * })
- */
+const provider = new SolidBucket('wasabi', {
+    accessKeyId: apiKey,
+    secretAccessKey: secretKey,
+})
 
 const uploadFile = (filePath) => {
     provider.uploadFile(bucketName, filePath).then((resp) => {
         if (resp.status === 200) {
+            console.log(200)
             console.log(resp)
         }
     }).catch((resp) => {
         if (resp.status === 400) {
+            console.log(400)
             console.log(resp)
         }
     })
