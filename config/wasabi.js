@@ -19,13 +19,11 @@ const provider = new SolidBucket('wasabi', {
 const uploadFile = (filePath) => {
     provider.uploadFile(bucketName, filePath).then((resp) => {
         if (resp.status === 200) {
-            console.log(200)
-            console.log(resp)
+            return 'ok'
         }
     }).catch((resp) => {
         if (resp.status === 400) {
-            console.log(400)
-            console.log(resp)
+            return 'error'
         }
     })
 }

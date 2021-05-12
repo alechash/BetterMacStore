@@ -10,9 +10,13 @@ const passport = require('passport')
 const Name = process.env.NAME
 const funcs = require('../config/functions');
 const he = require('he');
+const fs = require('fs');
 const wasabi = require('../config/wasabi')
 const csrf = require('csurf')
-const rl = require('../config/rateLimit')
+const rl = require('../config/rateLimit');
+const {
+    fstat
+} = require('fs');
 
 const csrfProtection = csrf({
     cookie: true
@@ -48,6 +52,7 @@ router.get('/new', csrfProtection, async function (req, res, next) {
     return res.render('base', about);
 })
 
+/** Absolute mess, needs redone first */
 router.post('/new', csrfProtection, rl.min_1, async function (req, res, next) {
     // if no user, redirect to login page
     funcs.needLoggedin(req.user, res, next)
@@ -61,8 +66,19 @@ router.post('/new', csrfProtection, rl.min_1, async function (req, res, next) {
     const category = req.body.category
     const appId = Math.floor(1000000 + Math.random() * 9000000)
 
-    const wasabiAppFile = wasabi.uploadFile(req.files.app.tempFilePath)
-    const wasabiZipFile = wasabi.uploadFile(req.files.zip.tempFilePath)
+    const wasabiAppFile = req.files.app.tempFilePath.split('/')
+    const wasabiZipFile = req.files.zip.tempFilePath.split('/')
+
+    uploadFiles()
+
+    function uploadFiles() {
+        if (fs.existsSync(req.files.zip.tempFilePath)) {
+            wasabi.uploadFile(req.files.app.tempFilePath)
+            wasabi.uploadFile(req.files.zip.tempFilePath)
+        } else {
+            uploadFiles()
+        }
+    }
 
     // BEGIN: check to see if user has access to the organization the app will be made for
     myOrgs.push('me')
@@ -115,17 +131,18 @@ router.post('/new', csrfProtection, rl.min_1, async function (req, res, next) {
         title: releaseTitle,
         creationDate: Date.now(),
         binaries: {
-            app: wasabiAppFile,
-            zip: wasabiZipFile
+            app: `https://s3.wasabisys.com/${process.env.WASABI_BUCKET_NAME}/${wasabiAppFile[wasabiAppFile.length -1]}`,
+            zip: `https://s3.wasabisys.com/${process.env.WASABI_BUCKET_NAME}/${wasabiZipFile[wasabiZipFile.length -1]}`
         },
     })
 
     // check if a dmg was uploaded
     if (req.files.dmg) {
-        const wasabiDmgFile = wasabi.uploadFile(req.files.dmg.tempFilePath)
+        wasabi.uploadFile(req.files.dmg.tempFilePath)
+        const wasabiDmgFile = req.files.dmg.tempFilePath.split('/')
 
         // if so, add it to the template
-        newRelease.binaries.dmg = wasabiDmgFile
+        newRelease.binaries.dmg = `https://s3.wasabisys.com/${process.env.WASABI_BUCKET_NAME}/${wasabiDmgFile[wasabiDmgFile.length -1]}`
     }
 
     // create new app icon template
@@ -162,10 +179,6 @@ router.post('/new', csrfProtection, rl.min_1, async function (req, res, next) {
 })
 
 router.get('/:id', async function (req, res, next) {
-    // finds the apps homepage
-
-    return res.send('Hi')
-
     // find the actual app data
     const app = await Application.findOne({
         'unique.appId': req.params.id
