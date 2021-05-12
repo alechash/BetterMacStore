@@ -4,11 +4,11 @@
   "description": "a better mac app store, because the current one stinks",
   "main": "index.js",
   "scripts": {
-    "start": "yarn build:css && npm run i18n_comp && nodemon .",
+    "start": "yarn build:css && npm run i18n:compile && nodemon .",
     "lint": "node .scripts/.tests/linter.js",
     "test": "node .scripts/.tests/tests.js",
     "translate": "node .scripts/translate.js",
-    "i18n_comp": "node .scripts/compile.js",
+    "i18n:compile": "node .scripts/compile.js",
     "build:css": "postcss public/css/tailwind.css -o public/css/style.css"
   },
   "repository": {
