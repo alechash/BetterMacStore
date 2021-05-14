@@ -1,5 +1,5 @@
 <div class="box-header p-9 px-4 font-bold pt-12">
-    <h2 class="text-2xl">Results for "<i><%= search %></i>"</h2>
+    <h2 class="text-2xl"><%= Results_for %> "<i><%= search %></i>"</h2>
     <form action="/search" method="GET">
         <div class="grid grid-cols-10 mt-3">
             <span class="col-span-8">
@@ -9,7 +9,7 @@
             <span class="col-span-2 pl-3">
                 <span class="">
                     <button type="submit"
-                        class="bg-blue-500 text-white px-4 rounded-lg text-lg p-0.5 w-full">search</button>
+                        class="bg-blue-500 text-white px-4 rounded-lg text-lg p-0.5 w-full"><%= search %></button>
                 </span>
             </span>
         </div>
@@ -37,6 +37,6 @@
     </div>
     <% } %>
     <% if(apps.length == 0) { %>
-    <p class="text-center w-full mt-12 font-normal">There are no apps for that term</p>
+    <p class="text-center w-full mt-12 font-normal"><%= There are no apps for that term %></p>
     <% } %>
 </div>

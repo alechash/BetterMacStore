@@ -48,6 +48,7 @@ app.use('/', require('./routes/main'))
 app.use('/account', require('./routes/account'))
 app.use('/app', require('./routes/app'))
 app.use('/dev', require('./routes/developer'))
+app.use('/developer', require('./routes/docs'))
 app.use('/', require('./routes/user'))
 
 mongoose.connect(process.env.MONGO, {
