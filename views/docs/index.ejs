@@ -1,134 +1,49 @@
-<div class="box-header p-9 px-4 font-bold pt-12">
-    <h1 class="text-3xl font-sans subpixel-antialiased diagonal-fractions tracking-wider py-3">
-        <%= Today_is %> <%= February %> <span class="ordinal">19th</span>, <%= Welcome %>
+<div class="box-header p-9 px-4 font-bold pt-12" id="top">
+    <h1 class="text-3xl font-sans subpixel-antialiased diagonal-fractions tracking-wider py-3 capitalize">
+        <%= name %> <%= documentation %>
     </h1>
 </div>
-<div class="row">
-    <div class="col-12 col-md-6">
-        <div class="box">
-            <div class="box-header p-3 px-4 font-bold pb-0">
-                <h1
-                    class="text-2xl font-sans subpixel-antialiased diagonal-fractions tracking-wider py-3 pb-0 text-gray-600">
-                    <%= Today %>
-                </h1>
-            </div>
-            <div>
-                <div class="w-full mb-12">
-                    <div class="m-3 bg-gray-200 rounded-2xl p-3 px-5 shadow-xl atv">
-                        <h1 class="text-2xl font-sans subpixel-antialiased diagonal-fractions tracking-wider py-3">
-                            This is a post title 2/4.
-                        </h1>
-                        <p class="text-normal font-sans subpixel-antialiased diagonal-fractions py-2 px-1 text-justify">
-                            Hello, this is a post description that you can read. Hello, this is a post description that
-                            you
-                            can read. Hello, this is a post description that you can read. Hello, this is a post
-                            description
-                            that you can read. Hello, this is a post description that you can read. Hello, this is a
-                            post
-                            description that you can read. Hello, this is a post description that you can read.
-                            Hello, this is a post description that you can read. Hello, this is a post description that
-                            you
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full mb-12">
-                <div class="m-3 bg-gray-600 rounded-2xl p-3 px-5 shadow-xl text-white shadow-2xl">
-                    <h1
-                        class="text-2xl font-sans subpixel-antialiased diagonal-fractions tracking-wider py-3 pb-0 pt-4">
-                        <img src="/img/_logo.png" class="w-12 float-left rounded mt-0.5">
-                        <span class="pl-3"><a href="/app/9743920">Visual Studio Code</a></span>
-                        <div
-                            class="float-right bg-blue-600 rounded-2xl p-1 px-3 pt-1.5 text-sm uppercase font-bold cursor-pointer shadow-2xl">
-                            <a href="/app/9743920/download/latest" download><%= Download %></a>
-                        </div>
-                    </h1>
-                    <h4 class="text-xs font-sans subpixel-antialiased diagonal-fractions tracking-wider py-3 pt-0 mb-2">
-                        <span class="pl-3"><a href="/dev/microsoft" class="hover:underline">Microsoft</a></span>
-                        <div class="float-right rounded-2xl p-1 px-3 pt-1.5 text-xsm uppercase">
-                            Free
-                        </div>
-                    </h4>
-                </div>
-            </div>
-            <div>
-                <div class="w-full mb-12">
-                    <div class="m-3 bg-gray-200 rounded-2xl p-3 px-5 shadow-xl atv">
-                        <h1 class="text-2xl font-sans subpixel-antialiased diagonal-fractions tracking-wider py-3">
-                            This is a post title 2/4.
-                        </h1>
-                        <p class="text-normal font-sans subpixel-antialiased diagonal-fractions py-2 px-1 text-justify">
-                            Hello, this is a post description that you can read. Hello, this is a post description that
-                            you
-                            can read. Hello, this is a post description that you can read. Hello, this is a post
-                            description
-                            that you can read. Hello, this is a post description that you can read. Hello, this is a
-                            post
-                            description that you can read. Hello, this is a post description that you can read.
-                        </p>
-                    </div>
-                </div>
+<div class="mx-6">
+    <div class="bg-gray-200 rounded-lg border border-gray-800">
+        <div class="mx-2 my-2">
+            <h3 class="capitalize cursor-pointer font-bold" id="dev_expand"><%= documentation %><span
+                    class="float-right mr-2" id="toggle_indicator_closed">▲</span><span class="float-right mr-2 hidden"
+                    id="toggle_indicator_open">▼</span></h3>
+            <div class="hidden" id="toc_content">
+                <ul class="ml-6 list-disc">
+                    <li class="capitalize"><a class="text-blue-600 hover:underline"
+                            href="#<%= organizations %>"><%= organizations %></a>
+                    </li>
+                    <ul class="ml-6  list-disc">
+                        <li class="capitalize"><a class="text-blue-600 hover:underline"
+                                href="#<%= creating_organizations %>"><%= creating_organizations %></a>
+                        </li>
+                    </ul>
+                    <li>.......</li>
+                </ul>
             </div>
         </div>
     </div>
-    <div class="col-12 col-md-6">
-        <div class="box">
-            <div class="box-header p-3 px-4 font-bold pb-0">
-                <h1
-                    class="text-2xl font-sans subpixel-antialiased diagonal-fractions tracking-wider py-3 pb-0 text-gray-600">
-                    <%= Yesterday %>, February <span class="ordinal">7th</span>
-                </h1>
-            </div>
-            <div>
-                <div class="w-full mb-12">
-                    <div class="m-3 bg-gray-200 rounded-2xl p-3 px-5 shadow-xl atv">
-                        <h1 class="text-2xl font-sans subpixel-antialiased diagonal-fractions tracking-wider py-3">
-                            This is a post title 2/4.
-                        </h1>
-                        <p class="text-normal font-sans subpixel-antialiased diagonal-fractions py-2 px-1 text-justify">
-                            Hello, this is a post description that you can read. Hello, this is a post description that
-                            you
-                            can read. Hello, this is a post description that you can read. Hello, this is a post
-                            description
-                            that you can read. Hello, this is a post description that you can read. Hello, this is a
-                            post
-                            description that you can read. Hello, this is a post description that you can read.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="w-full mb-12">
-                    <div class="m-3 bg-gray-200 rounded-2xl p-3 px-5 shadow-xl atv">
-                        <h1 class="text-2xl font-sans subpixel-antialiased diagonal-fractions tracking-wider py-3">
-                            This is a post title 2/4.
-                        </h1>
-                        <p class="text-normal font-sans subpixel-antialiased diagonal-fractions py-2 px-1 text-justify">
-                            Hello, this is a post description that you can read. Hello, this is a post description that
-                            you
-                            can read. Hello, this is a post description that you can read. Hello, this is a post
-                            description
-                            that you can read. Hello, this is a post description that you can read. Hello, this is a
-                            post
-                            description that you can read. Hello, this is a post description that you can read.
-                            Hello, this is a post description that you can read. Hello, this is a post description that
-                            you
-                            can read. Hello, this is a post description that you can read. Hello, this is a post
-                            description
-                            that you can read. Hello, this is a post description that you can read. Hello, this is a
-                            post
-                            description that you can read. Hello, this is a post description that you can read.
-                            Hello, this is a post description that you can read. Hello, this is a post description that
-                            you
-                            can read. Hello, this is a post description that you can read. Hello, this is a post
-                            description
-                            that you can read. Hello, this is a post description that you can read. Hello, this is a
-                            post
-                            description that you can read. Hello, this is a post description that you can read.
-                        </p>
-                    </div>
-                </div>
+    <div class="mt-6 mb-12">
+        <div>
+            <h3 class="font-bold text-2xl capitalize" id="<%= organizations %>"><%= organizations %> <a
+                    class="text-sm text-blue-600" href="#top">▲
+                    <%= top %></a>
+            </h3>
+            <p><%= Organizations_are_an_easy_way_to_release_apps_for_comapanies_nonprofits_and_more %>
+                <%= These_organizations_are_easy_to_create_follow_the_steps_below_for_more_information %></p>
+            <div class="mx-6 mt-2">
+                <h3 class="font-bold text-xl capitalize" id="<%= creating_organizations %>">
+                    <%= creating_organizations %> <a class="text-sm text-blue-600" href="#top">▲
+                        <%= top %></a>
+                </h3>
+                <p><%=  Creating_organizations_is_rather_easy  %>
+                    <%=  You_can_do_this_by_pressing_the_dropdown_in_the_top_right  %>
+                    <%=  Then_select  %> "<span><%= Settings %></span>", <%=  when_in_settings_press  %>
+                    "<span><%= Create_an_Organization %></span>".
+                    <%=  Lastly_you_can_go_through_the_steps_of_creating_an_organization  %></p>
             </div>
         </div>
     </div>
 </div>
+<script src="/js/docs.js"></script>

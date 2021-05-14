@@ -14,7 +14,6 @@
 const readline = require('readline')
 const path = require('path');
 const fs = require('fs');
-const re = new RegExp(' ', 'g');
 const jsonMerger = require("json-merger");
 
 var englishString
@@ -54,7 +53,7 @@ function translate() {
             return console.log('Unable to scan directory: ' + err);
         }
 
-        const newTitle = englishString.replace(re, '_')
+        const newTitle = englishString.replace(/\ /g, '_').replace(/\./g, '').replace(/\,/g, '')
 
         //listing all files using forEach
         files.forEach(function (file) {
@@ -70,7 +69,9 @@ function translate() {
 
             fs.writeFileSync(directoryPath + file, 'const language = ' + JSON.stringify(oldFile) + '\n\n module.exports = language')
 
-            console.log('\n      ...success\n\n')
+            console.log('      ...success\n\n')
         });
+
+        console.log('ejs string: <%= ', newTitle, ' %>')
     });
 }
