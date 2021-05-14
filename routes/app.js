@@ -52,6 +52,18 @@ router.get('/new', csrfProtection, async function (req, res, next) {
     return res.render('base', about);
 })
 
+router.get('/icon/:appId', csrfProtection, async function (req, res, next) {
+    // if no user, redirect to login page
+    const appId = req.params.appId
+
+    const icon = await Image.findOne({
+        app: appId,
+        type: 'icon'
+    })
+
+    res.redirect(icon.url)
+})
+
 /** Absolute mess, needs redone first */
 router.post('/new', csrfProtection, rl.min_1, async function (req, res, next) {
     // if no user, redirect to login page
@@ -248,10 +260,9 @@ router.get('/:id', async function (req, res, next) {
     return res.render('base', about);
 });
 
-router.get('/:id/download/:version/:type/:file', async function (req, res, next) {
+router.get(['/:id/download/:version/:type/:file', '/:id/download/:version/:type'], async function (req, res, next) {
     const version = req.params.version
     const appId = req.params.id
-    const fileName = req.params.file
     const fileType = req.params.type
 
     var availableTypes = ['app', 'zip', 'dmg']
